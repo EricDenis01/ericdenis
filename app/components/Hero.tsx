@@ -43,7 +43,7 @@ export default function Hero() {
           className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-paper-muted)]"
         >
           <span className="h-px w-8 bg-[var(--color-paper-muted)]" />
-          <span>Senior PM · Barcelona · Open to work</span>
+          <span>AI-Augmented Senior PM · Barcelona · Open to work</span>
         </motion.div>
 
         {/* Big serif name */}

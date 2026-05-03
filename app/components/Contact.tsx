@@ -46,12 +46,7 @@ const REVEAL: Variants = {
   }),
 };
 
-// Visible email is mildly obfuscated for naive scrapers; the mailto: href
-// is direct so the buttons reliably trigger the user's mail client.
-const EMAIL_USER = "contact";
-const EMAIL_HOST = "ericdenis.com";
-const EMAIL_ADDRESS = `${EMAIL_USER}@${EMAIL_HOST}`;
-const VISIBLE_EMAIL = `${EMAIL_USER}[at]${EMAIL_HOST.replace(".", "[dot]")}`;
+const EMAIL_ADDRESS = "contact@ericdenis.com";
 
 function mailto(subject?: string) {
   return `mailto:${EMAIL_ADDRESS}${
@@ -63,7 +58,7 @@ const CONTACT_ITEMS = [
   {
     icon: Mail,
     label: "Email",
-    value: VISIBLE_EMAIL,
+    value: EMAIL_ADDRESS,
     href: mailto(),
   },
   {
@@ -97,7 +92,6 @@ export default function Contact() {
               Get in <span className="text-[var(--color-amber)]">touch</span>.
             </>
           }
-          subtitle="Both doors land in the same inbox. Pick the one that fits — I'll know which lane you're in from the subject line."
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -121,8 +115,8 @@ export default function Contact() {
                 Hire me · full-time
               </h3>
               <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Senior PM roles. Music tech, AI products, anything that needs a
-                product lead who&apos;ll also write code. Remote-first since 2016.
+                Senior PM roles. SaaS, music tech, AI products. Remote-first
+                since 2016. I&apos;ll also write code.
               </p>
             </div>
             <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-paper)]">

@@ -26,11 +26,11 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://ericdenis.com"),
   title: {
-    default: "Eric Denis — Product Leader · AI, Music & Technology",
+    default: "Eric Denis — AI-Augmented Senior PM",
     template: "%s · Eric Denis",
   },
   description:
-    "Senior product leader at the intersection of AI, music rights, and builder culture. 10+ years building SaaS for music monitoring, royalties, and content recognition.",
+    "AI-Augmented Senior PM. Ten years of SaaS, with a music-tech specialism. 360° view from rights bodies and distributors to the artists, labels, and festivals on the other side.",
   keywords: [
     "Eric Denis",
     "Product Manager",
@@ -49,15 +49,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ericdenis.com",
     siteName: "Eric Denis",
-    title: "Eric Denis — Product Leader · AI, Music & Technology",
+    title: "Eric Denis — AI-Augmented Senior PM",
     description:
-      "Senior product leader at the intersection of AI, music rights, and builder culture.",
+      "Ten years of SaaS with a music-tech specialism. 360° view from the deep tech to the stage.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Eric Denis — Product Leader · AI, Music & Technology",
+    title: "Eric Denis — AI-Augmented Senior PM",
     description:
-      "Senior product leader at the intersection of AI, music rights, and builder culture.",
+      "Ten years of SaaS with a music-tech specialism. 360° view from the deep tech to the stage.",
   },
   robots: { index: true, follow: true },
 };

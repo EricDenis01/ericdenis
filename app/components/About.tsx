@@ -112,13 +112,13 @@ export default function About() {
         >
           <p className="max-w-3xl font-display text-xl italic leading-relaxed text-[var(--color-paper-muted)] md:text-2xl"
              style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}>
-            Strong business acumen, a feel for beautiful design, and an
-            intuition for what users actually need — sharpened by being one
-            of those users myself.
+            Strong business acumen, an eye for beautiful design, and intuition
+            for what users actually need. Always at the cutting edge — testing
+            the latest tools, models, and possibilities.
           </p>
           <ul className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]">
             <li>Based — Barcelona</li>
-            <li>Remote — 10+ yrs · pre-COVID</li>
+            <li>Remote-first since 2016</li>
             <li>Languages — FR / EN / ES</li>
             <li>Available — full-time + freelance</li>
           </ul>
