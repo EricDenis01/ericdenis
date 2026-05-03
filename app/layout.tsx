@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, DM_Sans, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import MouseSpotlight from "./components/MouseSpotlight";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -74,6 +75,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen font-body antialiased">
         <div className="grain" aria-hidden />
+        <MouseSpotlight />
         {children}
         <Analytics />
         <SpeedInsights />

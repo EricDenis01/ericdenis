@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { Sparkles, Rocket, LayoutTemplate } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import SectionHeader from "./SectionHeader";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
@@ -22,6 +24,8 @@ type Service = {
   format: string;
   forWho: string;
   proof: string[];
+  icon: LucideIcon;
+  accent: string;
 };
 
 const SERVICES: Service[] = [
@@ -37,6 +41,8 @@ const SERVICES: Service[] = [
       "Utopia — ACR deployed on 45,000 radios",
       "BMAT — SPRE project, €500K/yr, −80% cost",
     ],
+    icon: Sparkles,
+    accent: "var(--color-amber)",
   },
   {
     number: "02",
@@ -46,6 +52,8 @@ const SERVICES: Service[] = [
     format: "Project · fixed scope or weekly",
     forWho: "Founders validating an idea, teams that need an MVP yesterday, anyone tired of figma-only handoffs.",
     proof: ["FestiPal — concept, mobile app, web app, prototypes, all mine"],
+    icon: Rocket,
+    accent: "var(--color-plum)",
   },
   {
     number: "03",
@@ -59,6 +67,8 @@ const SERVICES: Service[] = [
       "nestmicrofest.com — site + Stripe payments",
       "Strapi · Heroku CMS deployments",
     ],
+    icon: LayoutTemplate,
+    accent: "var(--color-sage)",
   },
 ];
 
@@ -79,7 +89,9 @@ export default function Services() {
         />
 
         <div className="grid gap-8 md:grid-cols-3 md:gap-10">
-          {SERVICES.map((s, i) => (
+          {SERVICES.map((s, i) => {
+            const Icon = s.icon;
+            return (
             <motion.article
               key={s.number}
               custom={0.1 + i * 0.12}
@@ -89,16 +101,30 @@ export default function Services() {
               variants={REVEAL}
               className="card-lift flex flex-col gap-7 border border-[var(--color-rule)] p-8 hover:border-[var(--color-paper-muted)] md:p-10 md:gap-8"
             >
-              <header>
-                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                  {s.number}
-                </span>
-                <h3
-                  className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-[2.1rem]"
-                  style={{ fontVariationSettings: "'opsz' 48, 'SOFT' 80, 'WONK' 0" }}
+              <header className="flex items-start gap-5">
+                <span
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    background: `color-mix(in srgb, ${s.accent} 14%, transparent)`,
+                    color: s.accent,
+                  }}
                 >
-                  {s.title}
-                </h3>
+                  <Icon size={22} strokeWidth={1.6} />
+                </span>
+                <div>
+                  <span
+                    className="font-mono text-[10px] uppercase tracking-[0.3em]"
+                    style={{ color: s.accent }}
+                  >
+                    {s.number}
+                  </span>
+                  <h3
+                    className="mt-2 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-[2.1rem]"
+                    style={{ fontVariationSettings: "'opsz' 48, 'SOFT' 80, 'WONK' 0" }}
+                  >
+                    {s.title}
+                  </h3>
+                </div>
               </header>
 
               <p className="text-base leading-relaxed text-[var(--color-paper-muted)]">
@@ -135,7 +161,8 @@ export default function Services() {
                 </div>
               </dl>
             </motion.article>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
