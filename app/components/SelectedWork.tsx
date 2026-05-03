@@ -63,17 +63,34 @@ const ROLES: Role[] = [
     company: "BMAT",
     role: "Product Manager — Music Monitoring & Royalties · France",
     years: "2016 — 2022",
-    hook: "Spearheaded the TV and Radio monitoring system for SPRE — the French neighbouring rights society. Doubled their revenue, slashed cost, defined the product end-to-end.",
+    hook: "Built the TV and Radio monitoring system for SPRE — the French neighbouring rights society — from zero. Won the public tender, opened the French market for BMAT, scaled the project to €500K/yr while cutting cost 80% through automation.",
     metrics: [
-      { value: "€500K", label: "annual revenue, 2× growth" },
+      { value: "0 → €500K", label: "annual revenue · French market unlocked" },
       { value: "−80%", label: "cost reduction via automation" },
       { value: "5", label: "freelancers recruited & trained" },
     ],
     bullets: [
+      "Won the public tender for SPRE — French neighbouring rights society",
       "Product Owner — interface between client, engineering, and leadership",
       "Defined specs, roadmaps, prioritized backlogs, streamlined workflows",
       "Coordinated cross-functional teams (BE, FE, R&D, Operations) in Agile/Scrum",
-      "Attended major industry events for biz dev",
+    ],
+  },
+  {
+    company: "Earlier — Quant Economics",
+    role: "Economist · Quantitative Research",
+    years: "2013 — 2016",
+    hook: "AI before it was called AI. Time-series forecasting and global-economy modelling at the highest level — Focus Economics, ECB, UN ILO, European Commission. The mathematical and statistical foundation that still lets me read modern ML papers and stay at the cutting edge of the field.",
+    metrics: [
+      { value: "EU · ECB · UN", label: "institutions worked at" },
+      { value: "Matlab · Stata", label: "modelling stack" },
+      { value: "Pre-2014", label: "AI before AI" },
+    ],
+    bullets: [
+      "Time-series forecasting and global-economy modelling on multivariate datasets",
+      "Applied quantitative modelling & statistical analysis (Matlab, Stata, Eviews)",
+      "Automated and restructured data workflows to scale research and reduce manual work",
+      "Contributed to academic and institutional research used in economic policymaking",
     ],
   },
 ];
@@ -151,7 +168,7 @@ export default function SelectedWork() {
               <span className="text-[var(--color-amber)]">shipped</span>.
             </>
           }
-          subtitle="BMAT, Utopia Music, Revelator. Music-rights monitoring, content recognition AI, distribution analytics."
+          subtitle="Music-rights monitoring, content recognition AI, distribution analytics, AI roadmaps. And before all that — quantitative economics at EU institutions."
         />
 
         <div>
@@ -160,16 +177,6 @@ export default function SelectedWork() {
           ))}
         </div>
 
-        <motion.p
-          custom={0.5}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={REVEAL}
-          className="mt-10 border-t border-[var(--color-rule)] pt-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]"
-        >
-          Earlier roles → Focus Economics, UN ILO, European Central Bank, European Commission.
-        </motion.p>
       </div>
     </section>
   );
