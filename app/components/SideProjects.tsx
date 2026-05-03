@@ -98,14 +98,14 @@ export default function SideProjects() {
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           number="06"
-          label="Entrepreneurial"
+          label="Side projects"
           title={
             <>
-              Operator, not just{" "}
-              <span className="text-[var(--color-amber)]">observer</span>.
+              Off the{" "}
+              <span className="text-[var(--color-amber)]">clock</span>.
             </>
           }
-          subtitle="The other half of the trifecta — the projects I run that put me on the same side of the table as the rights-holders my products serve."
+          subtitle="A festival, a record label, a YouTube channel, a web radio. The reason my product instincts are where they are."
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">

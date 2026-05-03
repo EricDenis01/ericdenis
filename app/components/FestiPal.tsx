@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Variants } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
@@ -33,13 +34,140 @@ function GithubIcon({ size = 14 }: { size?: number }) {
   );
 }
 
+type Slide = {
+  src: string;
+  alt: string;
+  caption: string;
+  w: number;
+  h: number;
+};
+
+const SLIDES: Slide[] = [
+  {
+    src: "/festipal/welcome-desktop.png",
+    alt: "FestiPal — welcome onboarding, desktop",
+    caption: "Onboarding · welcome",
+    w: 1920,
+    h: 1080,
+  },
+  {
+    src: "/festipal/signup-desktop.png",
+    alt: "FestiPal — sign-up flow, desktop",
+    caption: "Sign-up · pick your lane",
+    w: 1920,
+    h: 1080,
+  },
+  {
+    src: "/festipal/done-desktop.png",
+    alt: "FestiPal — onboarding complete, desktop",
+    caption: "Onboarding · complete",
+    w: 1920,
+    h: 1080,
+  },
+  {
+    src: "/festipal/welcome-mobile.png",
+    alt: "FestiPal — welcome onboarding, mobile",
+    caption: "Mobile · same flow, smaller surface",
+    w: 750,
+    h: 1334,
+  },
+];
+
+function FestiPalSlider() {
+  const [i, setI] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setI((c) => (c + 1) % SLIDES.length), 5500);
+    return () => clearInterval(t);
+  }, [paused]);
+
+  const prev = () => setI((c) => (c - 1 + SLIDES.length) % SLIDES.length);
+  const next = () => setI((c) => (c + 1) % SLIDES.length);
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Slide stage */}
+      <div className="relative aspect-[16/10] overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={SLIDES[i].src}
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.7, ease: EASE }}
+            className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
+          >
+            <Image
+              src={SLIDES[i].src}
+              alt={SLIDES[i].alt}
+              width={SLIDES[i].w}
+              height={SLIDES[i].h}
+              className="h-full w-auto max-w-full object-contain"
+              priority={i === 0}
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Prev / Next */}
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous slide"
+          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/60 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-paper)] hover:text-[var(--color-paper)] md:left-5"
+        >
+          <ChevronLeft size={18} />
+        </button>
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next slide"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/60 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-paper)] hover:text-[var(--color-paper)] md:right-5"
+        >
+          <ChevronRight size={18} />
+        </button>
+
+        {/* Caption + counter */}
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-[var(--color-rule)] bg-[var(--color-ink)]/70 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-muted)] backdrop-blur-sm md:px-7 md:py-4 md:text-xs">
+          <span>{SLIDES[i].caption}</span>
+          <span>
+            {String(i + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
+          </span>
+        </div>
+      </div>
+
+      {/* Dot indicators */}
+      <div className="mt-6 flex items-center justify-center gap-2">
+        {SLIDES.map((_, idx) => (
+          <button
+            key={idx}
+            type="button"
+            onClick={() => setI(idx)}
+            aria-label={`Go to slide ${idx + 1}`}
+            className={`h-1 transition-all duration-300 ${
+              idx === i
+                ? "w-12 bg-[var(--color-amber)]"
+                : "w-6 bg-[var(--color-rule)] hover:bg-[var(--color-paper-muted)]"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const SCOPE = [
   { tag: "Idea & concept", body: "From blank page to validated product." },
-  { tag: "Web — festipal.io", body: "Next.js 16, App Router, Tailwind v4, Firebase Hosting + SSR." },
-  { tag: "Mobile — app.festipal.io", body: "React Native + Expo, multi-language, role-based perms." },
-  { tag: "Tickets — tickets.festipal.io", body: "Host-routed B2C consumer surface." },
-  { tag: "FestiLink directory", body: "Marketplace connecting organizers ↔ suppliers ↔ venues." },
-  { tag: "Front-end + UI/UX", body: "Pixel-perfect, light + dark, multi-language (5)." },
+  { tag: "Web · festipal.io", body: "Next.js 16, App Router, Tailwind v4, Firebase Hosting + SSR." },
+  { tag: "Mobile · app.festipal.io", body: "React Native + Expo, multi-language, role-based perms." },
+  { tag: "Tickets · tickets.festipal.io", body: "Host-routed B2C consumer surface." },
+  { tag: "FestiLink directory", body: "Marketplace connecting organizers · suppliers · venues." },
+  { tag: "Front-end + UI/UX", body: "Pixel-perfect, light + dark, five languages." },
 ];
 
 const STACK = [
@@ -63,7 +191,7 @@ export default function FestiPal() {
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           number="05"
-          label="Flagship · FestiPal"
+          label="FestiPal"
           title={
             <>
               I had the idea.
@@ -71,26 +199,19 @@ export default function FestiPal() {
               I <span className="text-[var(--color-amber)]">built it</span>.
             </>
           }
-          subtitle="An event management operating system for festival organizers, suppliers, venues, and talent — with a B2C ticketing layer. Concept, web, mobile, prototypes, and front-end, all built end-to-end. Launching soon."
+          subtitle="An event management OS for festival organizers, suppliers, venues, and talent — with a B2C ticketing layer. Concept, web, mobile, prototypes — built end-to-end. Launching soon."
         />
 
-        {/* Hero screenshot */}
+        {/* Slider */}
         <motion.div
           custom={0.1}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={REVEAL}
-          className="relative mb-16 overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]"
+          className="mb-16"
         >
-          <Image
-            src="/festipal/welcome-desktop.png"
-            alt="FestiPal onboarding — welcome screen, dark mode, desktop"
-            width={1920}
-            height={1080}
-            className="h-auto w-full"
-            priority
-          />
+          <FestiPalSlider />
         </motion.div>
 
         {/* Description + scope grid */}
@@ -115,9 +236,9 @@ export default function FestiPal() {
               className="mt-4 font-display text-2xl leading-snug text-[var(--color-paper)] md:text-3xl"
               style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
             >
-              FestiPal is the operating system for the modern festival —
-              connecting organizers, suppliers, venues, and talent in one
-              workspace, plus a consumer ticketing layer on top.
+              The operating system for the modern festival — organizers,
+              suppliers, venues, and talent in one workspace, with a consumer
+              ticketing layer on top.
             </motion.p>
             <motion.p
               custom={0.4}
@@ -129,12 +250,12 @@ export default function FestiPal() {
             >
               Three host-routed surfaces on one Next.js codebase:{" "}
               <span className="text-[var(--color-paper)]">festipal.io</span> for
-              B2B marketing + workspace,{" "}
+              B2B,{" "}
               <span className="text-[var(--color-paper)]">app.festipal.io</span>{" "}
               for the Expo mobile + web app, and{" "}
               <span className="text-[var(--color-paper)]">tickets.festipal.io</span>{" "}
-              for consumer ticketing. Firebase backend, multi-language (EN / FR / DE / ES / IT),
-              role-based permissions, Stripe + Resend integrations.
+              for consumer ticketing. Firebase backend, five languages,
+              role-based permissions, Stripe and Resend wired in.
             </motion.p>
             <motion.p
               custom={0.5}
@@ -144,10 +265,10 @@ export default function FestiPal() {
               variants={REVEAL}
               className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-paper-muted)]"
             >
-              I had the idea, defined the concept, designed the workspace, built
-              the front-end, and wired the prototypes — all bridged by my decade
-              of music-tech product work and my decade of running festivals as
-              CEO of NEST.
+              I had the idea, defined the concept, designed the workspace, and
+              built the front-end. Ten years of music-tech product work meets
+              ten years of running NEST. Same person on both sides of the
+              workflow.
             </motion.p>
 
             <motion.div
@@ -186,7 +307,7 @@ export default function FestiPal() {
             className="grid gap-4 self-start"
           >
             <li className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-              Built top to bottom →
+              Built top to bottom
             </li>
             {SCOPE.map((s) => (
               <li
@@ -207,44 +328,6 @@ export default function FestiPal() {
           </motion.ul>
         </div>
 
-        {/* Secondary screenshots */}
-        <motion.div
-          custom={0.55}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={REVEAL}
-          className="mt-16 grid gap-4 md:grid-cols-3 md:gap-6"
-        >
-          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
-            <Image
-              src="/festipal/signup-desktop.png"
-              alt="FestiPal sign-up flow"
-              width={1920}
-              height={1080}
-              className="h-auto w-full"
-            />
-          </div>
-          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
-            <Image
-              src="/festipal/done-desktop.png"
-              alt="FestiPal completed onboarding"
-              width={1920}
-              height={1080}
-              className="h-auto w-full"
-            />
-          </div>
-          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
-            <Image
-              src="/festipal/welcome-mobile.png"
-              alt="FestiPal mobile onboarding"
-              width={750}
-              height={1334}
-              className="h-auto w-full"
-            />
-          </div>
-        </motion.div>
-
         {/* Tech stack strip */}
         <motion.div
           custom={0.7}
@@ -255,7 +338,7 @@ export default function FestiPal() {
           className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-[var(--color-rule)] pt-8"
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-muted)]">
-            Stack →
+            Stack
           </span>
           {STACK.map((t) => (
             <span

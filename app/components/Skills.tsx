@@ -111,14 +111,13 @@ export default function Skills() {
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           number="07"
-          label="Skills & Stack"
+          label="Stack & specialisms"
           title={
             <>
-              The toolkit, in{" "}
-              <span className="text-[var(--color-amber)]">seven buckets</span>.
+              The <span className="text-[var(--color-amber)]">toolkit</span>.
             </>
           }
-          subtitle="Honest qualifiers throughout — 'basics' and 'working knowledge' mean what they say. No inflation."
+          subtitle="Honest qualifiers — 'basics' means basics. No inflation."
         />
 
         <div className="grid gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-3">

@@ -27,50 +27,50 @@ type Service = {
 const SERVICES: Service[] = [
   {
     number: "01",
-    title: "AI-augmented product management",
+    title: "Product management",
     blurb:
-      "Roadmaps, specs, backlogs, cross-functional team leadership — multiplied by AI tooling, and shipping AI features into production.",
-    format: "Full-time roles · senior consulting",
-    forWho: "SaaS companies (B2B / B2C), music-tech, AI-feature-heavy products",
+      "Specs, roadmaps, backlogs, and the calls about what to build next. I write code and run AI evals as part of the work, not instead of it.",
+    format: "Full-time · senior consulting",
+    forWho: "SaaS in music tech, AI-feature work, anything that needs a senior PM who shows up to the codebase.",
     proof: [
-      "Revelator AI roadmap",
-      "Utopia ACR scaled to 45,000 radios",
-      "BMAT €500K SPRE project, −80% cost",
+      "Revelator — AI roadmap, LLM/MCP-powered Insight Reports",
+      "Utopia — ACR deployed on 45,000 radios",
+      "BMAT — SPRE project, €500K/yr, −80% cost",
     ],
   },
   {
     number: "02",
     title: "Apps & prototypes",
     blurb:
-      "SaaS web apps, mobile apps, interactive prototypes, MVPs — vibe-coded fast, designed to validate ideas in market.",
-    format: "Project-based engagements",
-    forWho: "Founders, startups, internal innovation teams, validation projects",
-    proof: ["FestiPal — concept → mobile app → web app → prototype, end-to-end"],
+      "Working software in days, not slides in weeks. Mobile, web, full-stack. Built, deployed, handed over.",
+    format: "Project · fixed scope or weekly",
+    forWho: "Founders validating an idea, teams that need an MVP yesterday, anyone tired of figma-only handoffs.",
+    proof: ["FestiPal — concept, mobile app, web app, prototypes, all mine"],
   },
   {
     number: "03",
     title: "Websites & UI/UX",
     blurb:
-      "Marketing sites, portfolios, landing pages, Figma-to-React, component systems — shipped fast, designed to convert.",
-    format: "Project-based engagements",
-    forWho: "Small-to-mid teams who need a real site shipped fast, or design-to-code work",
+      "Marketing sites, landing pages, Figma-to-React. Designed to convert; shipped to a real domain with a real CMS.",
+    format: "Project",
+    forWho: "Small-to-mid teams that need a site live this month, or design that needs to become code.",
     proof: [
-      "This portfolio (Next.js + Tailwind, vibe-coded)",
-      "nestmicrofest.com administration",
-      "Strapi / Heroku CMS deployments",
+      "This site (Next.js + Tailwind)",
+      "nestmicrofest.com — site + Stripe payments",
+      "Strapi · Heroku CMS deployments",
     ],
   },
   {
     number: "04",
     title: "Music-tech advisory",
     blurb:
-      "Patent advisory, investment due diligence, whitepaper review, royalty / rights strategy — delivered at the executive level.",
-    format: "Referral · retainer · expert networks (Catalant, GLG, AlphaSights)",
+      "Patent advisory, investment due diligence, whitepaper review, royalty and rights strategy. Calls or retainers.",
+    format: "Referral · retainer · expert networks",
     forWho:
-      "Investors, music-tech startups, rights organizations, blockchain-music projects",
+      "Investors, music-tech startups, rights organisations, blockchain-music protocols.",
     proof: [
       "ICE — investment advisory",
-      "Musimap — patent advisory EU/US",
+      "Musimap — patent advisory, EU + US",
       "Allfeat — whitepaper, strategy, smart contracts",
     ],
   },
@@ -85,11 +85,11 @@ export default function Services() {
           label="Services"
           title={
             <>
-              How I can{" "}
-              <span className="text-[var(--color-amber)]">work with you</span>.
+              Four ways to{" "}
+              <span className="text-[var(--color-amber)]">work together</span>.
             </>
           }
-          subtitle="Four offerings, two doors. Pick the lane that fits — full-time, project, or advisory."
+          subtitle="Full-time, project work, or advisory. Same person, different scope."
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -105,7 +105,7 @@ export default function Services() {
             >
               <header>
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                  Offering {s.number}
+                  {s.number}
                 </span>
                 <h3
                   className="mt-3 font-display text-2xl leading-tight tracking-tight text-[var(--color-paper)] md:text-3xl"

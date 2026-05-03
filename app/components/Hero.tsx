@@ -23,7 +23,7 @@ export default function Hero() {
       className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden px-6 pb-12 pt-32 md:px-10 md:pb-16 md:pt-40"
     >
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
-        {/* Masthead label */}
+        {/* Eyebrow rule */}
         <motion.div
           custom={0.2}
           initial="hidden"
@@ -32,7 +32,7 @@ export default function Hero() {
           className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.3em] text-[var(--color-paper-muted)]"
         >
           <span className="h-px w-8 bg-[var(--color-paper-muted)]" />
-          <span>Vol. 01 · Eric Denis</span>
+          <span>Senior PM · Barcelona · Open to work</span>
         </motion.div>
 
         {/* Big serif name */}
@@ -58,10 +58,11 @@ export default function Hero() {
           className="mt-8 max-w-2xl font-display text-2xl italic leading-snug text-[var(--color-paper-muted)] md:text-3xl"
           style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
         >
-          An <span className="text-[var(--color-paper)]">AI-augmented</span>{" "}
-          product manager building at the intersection of{" "}
-          <span className="text-[var(--color-paper)]">music</span> and{" "}
-          <span className="text-[var(--color-paper)]">technology</span>.
+          I make software for the music business.
+          Ten years, three companies. Plus a{" "}
+          <span className="text-[var(--color-paper)]">festival</span>, a{" "}
+          <span className="text-[var(--color-paper)]">label</span>, and the{" "}
+          <span className="text-[var(--color-paper)]">code</span> to build them.
         </motion.p>
 
         {/* Dual CTAs */}
@@ -76,17 +77,17 @@ export default function Hero() {
             href="#contact"
             className="group inline-flex items-center justify-center gap-2 rounded-full bg-[var(--color-amber)] px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-ink)] transition-colors duration-300 hover:bg-[var(--color-paper)]"
           >
-            Hire me full-time
+            Hire me · full-time
             <ArrowUpRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             />
           </Link>
           <Link
-            href="#festipal"
+            href="#contact"
             className="group inline-flex items-center justify-center gap-2 rounded-full border border-[var(--color-paper-muted)] px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper)] transition-colors duration-300 hover:border-[var(--color-paper)] hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)]"
           >
-            Build me a prototype
+            Hire me · per project
             <ArrowUpRight
               size={16}
               className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -105,14 +106,14 @@ export default function Hero() {
       >
         <div className="flex items-center gap-2">
           <MapPin size={12} aria-hidden />
-          <span>Barcelona — 41.38°N, 2.17°E</span>
+          <span>Barcelona</span>
         </div>
         <div className="flex items-center gap-6">
-          <span>10+ yrs in music tech</span>
-          <span className="hidden md:inline">·</span>
           <span>Remote-first since 2016</span>
+          <span className="hidden md:inline">·</span>
+          <span>FR · EN · ES</span>
         </div>
-        <span className="hidden md:inline">↓ Scroll</span>
+        <span className="hidden md:inline">↓</span>
       </motion.div>
     </section>
   );
