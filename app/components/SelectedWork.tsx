@@ -143,7 +143,7 @@ export default function SelectedWork() {
     <section id="work" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="02"
+          number="03"
           label="Selected Work"
           title={
             <>

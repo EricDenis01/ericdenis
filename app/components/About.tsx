@@ -17,19 +17,19 @@ const REVEAL: Variants = {
 
 const PILLARS = [
   {
-    tag: "Product",
-    title: "10+ years in music-tech product",
-    body: "BMAT, Utopia Music, Revelator. Royalties, content recognition, AI roadmaps — shipped to PROs, DSPs, and the world's biggest rights-holders.",
+    tag: "AI-augmented PM",
+    title: "AI as a multiplier, not a buzzword",
+    body: "I use AI to multiply my PM craft — specs, research, analysis — and I ship AI features into products. LLMs, MCP, and deep learning shipped to production at Revelator.",
   },
   {
-    tag: "Operator",
-    title: "Active in the music industry",
-    body: "CEO of NEST Festival, co-founder of Kommuna Records, founder of CMYK Music. I run the same kind of business my products serve.",
+    tag: "Music-tech specialist",
+    title: "10+ years in rights & royalties",
+    body: "BMAT, Utopia Music, Revelator. ACR, royalty flows, DSP analytics, copyright. Shipped to PROs, distributors, and the world's biggest rights-holders.",
   },
   {
-    tag: "Builder",
-    title: "I ship code, not just specs",
-    body: "Vibe-coding mobile and web apps end-to-end. FestiPal — concept, mobile app, web app, prototypes, front-end — built top to bottom.",
+    tag: "Hands-on builder",
+    title: "I design and code",
+    body: "Front-end, UI/UX, mobile and web prototypes, websites — vibe-coded end-to-end. FestiPal: concept → mobile app → web app → prototype, all my work.",
   },
 ];
 
@@ -45,14 +45,14 @@ export default function About() {
           label="About"
           title={
             <>
-              Three jobs.
+              Three crafts.
               <br />
               <span className="text-[var(--color-amber)]">One operator.</span>
             </>
           }
           subtitle={
             <>
-              Most senior PMs in music tech have one of these. I have all three —
+              Most senior PMs in music-tech have one of these. I have all three —
               and they reinforce each other.
             </>
           }
@@ -95,13 +95,13 @@ export default function About() {
         >
           <p className="max-w-3xl font-display text-xl italic leading-relaxed text-[var(--color-paper-muted)] md:text-2xl"
              style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}>
-            I lead distributed squads across R&D, Data, Engineering, and Design to
-            turn messy industry data into revenue-driving tools — and I bring a
-            lifelong passion for music into every product I touch.
+            B2B SaaS by day for rights bodies and distributors, B2C music ventures
+            after hours — festival, label, YouTube channel. The dual fluency is
+            the point.
           </p>
           <ul className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]">
             <li>Based — Barcelona</li>
-            <li>Languages — FR / EN / ES / JA</li>
+            <li>Languages — FR / EN / ES</li>
             <li>Available — full-time + freelance</li>
           </ul>
         </motion.div>

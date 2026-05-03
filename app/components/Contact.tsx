@@ -17,6 +17,21 @@ function LinkedinIcon({ size = 12 }: { size?: number }) {
     </svg>
   );
 }
+
+function GithubIconSm({ size = 12 }: { size?: number }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M12 .5C5.65.5.5 5.66.5 12.04c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56v-1.97c-3.2.7-3.87-1.55-3.87-1.55-.52-1.34-1.27-1.7-1.27-1.7-1.04-.72.08-.7.08-.7 1.15.08 1.75 1.19 1.75 1.19 1.02 1.76 2.68 1.25 3.34.96.1-.74.4-1.25.72-1.54-2.55-.3-5.24-1.29-5.24-5.74 0-1.27.45-2.31 1.18-3.13-.12-.3-.51-1.49.11-3.1 0 0 .97-.31 3.18 1.19a10.95 10.95 0 0 1 5.78 0c2.21-1.5 3.18-1.19 3.18-1.19.62 1.61.23 2.8.11 3.1.74.82 1.18 1.86 1.18 3.13 0 4.46-2.7 5.43-5.27 5.72.41.36.78 1.07.78 2.16v3.2c0 .31.21.67.8.55C20.21 21.45 23.5 17.13 23.5 12.04 23.5 5.66 18.35.5 12 .5Z" />
+    </svg>
+  );
+}
 import type { Variants } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
@@ -45,6 +60,12 @@ const CONTACT_ITEMS = [
     href: "https://www.linkedin.com/in/eric-denis-b977028a/",
   },
   {
+    icon: GithubIconSm,
+    label: "GitHub",
+    value: "@EricDenis01",
+    href: "https://github.com/EricDenis01",
+  },
+  {
     icon: Phone,
     label: "Phone",
     value: "+34 633 474 375",
@@ -62,7 +83,7 @@ export default function Contact() {
     <section id="contact" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="07"
+          number="08"
           label="Contact"
           title={
             <>
@@ -152,7 +173,7 @@ export default function Contact() {
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={REVEAL}
-          className="mt-16 grid gap-6 border-t border-[var(--color-rule)] pt-10 md:grid-cols-4"
+          className="mt-16 grid gap-6 border-t border-[var(--color-rule)] pt-10 sm:grid-cols-2 md:grid-cols-5"
         >
           {CONTACT_ITEMS.map(({ icon: Icon, label, value, href }) => {
             const inner = (

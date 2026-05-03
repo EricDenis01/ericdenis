@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 const EASE = [0.2, 0.8, 0.2, 1] as const;
 
 const NAV_LINKS = [
+  { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "Consulting", href: "#consulting" },
   { label: "FestiPal", href: "#festipal" },

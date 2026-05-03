@@ -23,39 +23,84 @@ type Bucket = {
 
 const BUCKETS: Bucket[] = [
   {
-    label: "Product",
-    title: "Strategy & delivery",
+    label: "AI-augmented PM",
+    title: "Ship AI features. Multiply PM craft.",
     items: [
-      "Roadmap & backlog prioritization",
-      "Stakeholder management",
-      "Agile / Scrum at scale",
-      "Distributed remote squads",
-      "JIRA · Miro · Slack · Google Suite",
-      "Wireframes · Figma · Zeplin",
+      "LLMs · MCP · RAG in production",
+      "AI evals",
+      "Vector databases (Milvus)",
+      "AI-augmented workflows · Cursor · Claude Code · ChatGPT",
+      "Roadmaps · specs · backlogs",
+      "Distributed-team leadership",
     ],
   },
   {
     label: "Music-tech domain",
-    title: "Where the rights live",
+    title: "Where the rights live.",
     items: [
-      "Royalty flows · CMOs · PROs",
-      "DDEX / ERN reporting",
-      "Distribution & DSP analytics",
-      "Content recognition / ACR",
-      "Copyright & neighbouring rights",
-      "Snowflake on Spotify / YouTube / Meta data",
+      "DDEX / ERN",
+      "CMOs / PROs reporting",
+      "DSPs — Spotify, YouTube, Meta, Apple",
+      "Automatic Content Recognition",
+      "Royalty & rights flows",
+      "Web3 + smart contracts for music (Allfeat)",
     ],
   },
   {
-    label: "Build / AI",
-    title: "Ship + apply ML",
+    label: "APIs & integrations",
+    title: "Wiring systems together.",
     items: [
-      "Next.js · React · Tailwind",
-      "Vibe-coding mobile + web prototypes",
-      "Applied LLMs · MCP · RAG",
-      "Deep learning fundamentals · TensorFlow",
-      "SQL · Python basics",
-      "Stata · Matlab · Eviews (quant background)",
+      "REST",
+      "OpenAPI / Swagger",
+      "Postman",
+      "OAuth · webhooks",
+      "Stripe (payment processing)",
+      "Docusign · ERD modelling",
+    ],
+  },
+  {
+    label: "Build & deploy",
+    title: "From Figma to live URL.",
+    items: [
+      "Next.js · React · TypeScript",
+      "Tailwind · Framer Motion",
+      "Figma · UI / UX",
+      "WordPress · Strapi (headless CMS)",
+      "Vercel · Netlify · Supabase",
+      "Mobile + web prototypes",
+    ],
+  },
+  {
+    label: "Data",
+    title: "Numbers into UX.",
+    items: [
+      "Snowflake",
+      "BigQuery (basics)",
+      "SQL",
+      "Python (basics)",
+      "TensorFlow (basics)",
+      "Tableau · Looker Studio · Stata",
+    ],
+  },
+  {
+    label: "Infrastructure literacy",
+    title: "Conversational, not expert.",
+    items: [
+      "GCP (working knowledge)",
+      "Kubernetes (working knowledge)",
+      "Docker (working knowledge)",
+      "Comfortable in conversations with platform engineering",
+    ],
+  },
+  {
+    label: "Ways of working",
+    title: "How I plug into eng teams.",
+    items: [
+      "Git / GitHub flow · feature branches · PR-driven dev",
+      "Code review · semantic versioning",
+      "Async-first · distributed teams across timezones",
+      "Agile / Scrum",
+      "JIRA · Linear · Notion · Miro · Slack · VS Code",
     ],
   },
 ];
@@ -65,21 +110,22 @@ export default function Skills() {
     <section id="skills" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="06"
+          number="07"
           label="Skills & Stack"
           title={
             <>
-              The toolkit, in <span className="text-[var(--color-amber)]">three buckets</span>.
+              The toolkit, in{" "}
+              <span className="text-[var(--color-amber)]">seven buckets</span>.
             </>
           }
-          subtitle="Product strategy, music-tech domain depth, and the actual ability to build the thing."
+          subtitle="Honest qualifiers throughout — 'basics' and 'working knowledge' mean what they say. No inflation."
         />
 
-        <div className="grid gap-10 md:grid-cols-3 md:gap-12">
+        <div className="grid gap-10 md:grid-cols-2 md:gap-12 lg:grid-cols-3">
           {BUCKETS.map((b, i) => (
             <motion.article
               key={b.label}
-              custom={0.1 + i * 0.12}
+              custom={0.1 + i * 0.08}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
@@ -90,12 +136,12 @@ export default function Skills() {
                 0{i + 1} / {b.label}
               </span>
               <h3
-                className="mt-4 font-display text-2xl leading-snug tracking-tight text-[var(--color-paper)] md:text-3xl"
+                className="mt-4 font-display text-xl leading-snug tracking-tight text-[var(--color-paper)] md:text-2xl"
                 style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
               >
                 {b.title}
               </h3>
-              <ul className="mt-6 space-y-3 text-sm text-[var(--color-paper-muted)] md:text-base">
+              <ul className="mt-5 space-y-2 text-sm text-[var(--color-paper-muted)]">
                 {b.items.map((it) => (
                   <li key={it} className="flex items-start gap-3">
                     <span className="mt-2 inline-block h-px w-3 shrink-0 bg-[var(--color-paper-muted)]" />

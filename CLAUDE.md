@@ -2,38 +2,80 @@
 
 # CLAUDE.md — Eric Denis Personal Portfolio
 
-> Project brief and content reference for AI coding assistants. Read this before suggesting changes.
+> Project brief and content reference for AI coding assistants. Read this before suggesting changes. Place this file at the project root — Claude Code auto-loads it as context.
 
 ---
 
 ## What we're building
 
-A personal portfolio site for **Eric Denis**, a senior product leader in AI and music technology, based in Barcelona. The site has two audiences:
+A personal portfolio site for **Eric Denis**, an AI-augmented product manager specialised in music and technology, based in Barcelona. The site converts two distinct audiences:
 
-1. **Hiring managers** evaluating Eric for senior full-time product roles
-2. **Prototype / freelance clients** evaluating Eric for build / vibe-coding gigs
+1. **Hiring managers** evaluating Eric for senior full-time PM roles or long consulting engagements
+2. **Project clients** evaluating Eric for app prototypes, websites, and front-end / UI&UX work
 
-The site needs to serve both audiences without compromising either. Two CTAs in the hero reflect this split: "Hire me full-time" and "Build me a prototype."
-
-## Positioning
-
-Eric's edge is the **trifecta**:
-
-- **Deep music-tech product expertise** — 10+ years at BMAT, Utopia Music, Revelator
-- **Active music industry operator** — festival CEO, label co-founder, 140k+ YouTube
-- **Ships code** — vibe-codes mobile/web apps, built FestiPal end-to-end
-
-Most senior PMs have one of these. Eric has all three. The site should make this trifecta the central narrative.
-
-**Tagline**: *"A product leader at the intersection of AI, music rights, and builder culture."*
+The site needs to serve both without compromising either. Two CTAs in the hero reflect this split: *"Hire me full-time"* and *"Build me a prototype."*
 
 ---
 
-## Tech stack
+## Positioning
+
+### Core tagline
+
+> **An AI-augmented product manager building at the intersection of music and technology.**
+
+### The trifecta (Eric's edge)
+
+Most senior PMs have one of these. Eric has all three:
+
+1. **AI-augmented PM craft** — Uses AI as a multiplier in PM work (specs, research, analysis) *and* ships AI features into products (LLMs, MCP, deep learning at Revelator)
+2. **Music & technology domain specialist** — 10+ years in rights, royalties, ACR, distribution at BMAT, Utopia, Revelator
+3. **Hands-on builder** — Designs *and* codes. Front-end, UI/UX, mobile and web prototypes, websites — not just specs
+
+### Why this matters
+
+Eric ships **B2B SaaS** professionally (BMAT/Utopia/Revelator — music industry orgs, rights bodies, distributors) *and* runs **B2C** music ventures personally (NEST Festival, CMYK YouTube 142k+, Kommuna Records, Kanvas.fm, FestiPal). That dual fluency — building for industry AND for end-users — is rare in music-tech and powers everything from rights UX to consumer feature design.
+
+---
+
+## Service offerings
+
+These are the four buckets the site needs to merchandise:
+
+### 1. AI-Augmented Product Management
+
+- **For**: SaaS companies (B2B / B2C), music-tech, AI-feature-heavy products
+- **What**: Roadmaps, specs, backlogs, cross-functional team leadership — multiplied by AI tooling
+- **Format**: Full-time roles · senior consulting engagements
+- **Proof points**: Revelator AI roadmap · Utopia ACR scaled to 45,000 radios · BMAT €500K/year SPRE project, −80% costs
+
+### 2. Apps & Prototypes
+
+- **For**: Founders, startups, internal innovation teams, validation projects
+- **What**: SaaS web apps · mobile apps · interactive prototypes · MVPs
+- **Format**: Project-based engagements
+- **Proof points**: FestiPal (concept → mobile app → web app → prototype, end-to-end)
+
+### 3. Websites & UI/UX
+
+- **For**: Small-to-mid teams who need a real site shipped fast, or design-to-code work
+- **What**: Marketing sites · portfolios · landing pages · Figma-to-React · component systems
+- **Format**: Project-based engagements
+- **Proof points**: This portfolio site (vibe-coded with Claude in Next.js + Tailwind) · nestmicrofest.com administration · Strapi/Heroku CMS deployments
+
+### 4. Music-Tech Advisory
+
+- **For**: Investors, music-tech startups, rights organizations, blockchain-music projects
+- **What**: Patent advisory · investment due diligence · whitepaper review · royalty / rights strategy
+- **Format**: By referral, retainers, and via expert networks (Catalant, GLG, AlphaSights)
+- **Proof points**: ICE (investment advisory) · Musimap (patent advisory EU/US) · Allfeat (whitepaper + strategy + smart contracts)
+
+---
+
+## Tech stack (this site)
 
 - **Next.js 16.2.4** (App Router, `app/` at project root — NOT `src/app/`, TypeScript)
 - **React 19.2.4**
-- **Tailwind CSS v4** (config lives in `app/globals.css` via `@theme` — there is no `tailwind.config.js`)
+- **Tailwind CSS v4** (config lives in `app/globals.css` via `@theme` — no `tailwind.config.js`)
 - **Framer Motion** (animations)
 - **lucide-react** (icons — use no other icon libraries)
 - **Vercel** (planned deployment)
@@ -80,41 +122,40 @@ Use Tailwind utilities `font-display`, `font-body`, `font-mono` (defined in @the
 Every section follows editorial conventions:
 
 ```
-[ MONO LABEL · SECTION NUMBER ]
+[ NN / Section Name ]
 Big Display Heading
 Optional italic subtitle in Fraunces
 ---horizontal rule (var(--color-rule))---
 Content
 ```
 
-Example: `[ 02 / Selected Work ]` → `Where I've shipped.` → italic subtitle → rule → cards.
-
-### Editorial flourishes to lean into
+### Editorial flourishes
 
 - Mono section numbers in brackets
 - Date stamps in mono
 - Unicode arrows (`→`, `↳`, `↗`) for navigation hints
 - Subtle pulsing amber dot for "open to work" / live indicators
-- Film grain overlay (added via `.grain` class in `globals.css`)
+- Film grain overlay (already in `.grain` class)
 
 ---
 
 ## Site structure
 
-| #  | Section            | Status   | File / Notes                                     |
-| -- | ------------------ | -------- | ------------------------------------------------ |
-| —  | Navigation (sticky)| Pending  | `app/components/Navigation.tsx`                  |
-| 01 | Hero               | Pending  | `app/components/Hero.tsx`                        |
-| 02 | About              | Pending  | Short bio, more personal than CV                 |
-| 03 | Selected Work      | Pending  | BMAT / Utopia / Revelator with metrics           |
-| 04 | Consulting         | Pending  | ICE / Musimap / Allfeat case studies             |
-| 05 | FestiPal           | Pending  | Largest visual treatment, screenshots            |
-| 06 | Side Projects      | Pending  | NEST / CMYK / Kommuna / Kanvas / nestmicrofest   |
-| 07 | Skills & Stack     | Pending  | Three buckets: Product, Music-Tech Domain, Build |
-| 08 | Contact            | Pending  | Form + Cal.com + email + LinkedIn                |
-| 09 | Footer             | Pending  | Editorial-style colophon                         |
+| #  | Section            | Status   | Purpose                                                               |
+| -- | ------------------ | -------- | --------------------------------------------------------------------- |
+| —  | Navigation (sticky)| Built    | Anchored nav                                                          |
+| 01 | Hero               | Built    | Positioning + dual CTAs                                               |
+| 02 | About              | Built    | Trifecta — AI-augmented PM × music-tech domain × hands-on builder     |
+| 03 | **Services**       | Pending  | The four offerings, explicit                                          |
+| 04 | Selected Work      | Built    | BMAT / Utopia / Revelator with metrics                                |
+| 05 | Consulting         | Built    | ICE / Musimap / Allfeat case studies                                  |
+| 06 | FestiPal           | Built    | Largest visual treatment, build proof                                 |
+| 07 | Side Projects      | Built    | NEST / CMYK / Kommuna / Kanvas — operator credentials                 |
+| 08 | Skills & Stack     | Built    | Mapped to service offerings — 7 buckets                               |
+| 09 | Contact            | Built    | Two-door CTAs + email/LinkedIn/GitHub/phone                           |
+| 10 | Footer             | Built    | Editorial-style colophon                                              |
 
-Anchor IDs in nav (must match): `#work`, `#consulting`, `#festipal`, `#projects`, `#contact`.
+Anchor IDs in nav (must match): `#services`, `#work`, `#consulting`, `#festipal`, `#projects`, `#contact`.
 
 ---
 
@@ -127,13 +168,13 @@ Anchor IDs in nav (must match): `#work`, `#consulting`, `#festipal`, `#projects`
 - **Phone**: +34 633 474 375
 - **Location**: Barcelona, Spain
 - **LinkedIn**: https://www.linkedin.com/in/eric-denis-b977028a/
+- **GitHub**: https://github.com/EricDenis01
 
 ### Languages
 
 - French (native)
 - English (fluent)
 - Spanish (advanced)
-- Japanese (intermediate)
 
 ### Education
 
@@ -141,11 +182,11 @@ Anchor IDs in nav (must match): `#work`, `#consulting`, `#festipal`, `#projects`
   - Admitted to PhD (Top 10 worldwide)
   - Full tuition waiver & scholarship
 - **BSc Economics, 2011** — HEC Lausanne
-  - Faculty Prize (best grade of the BSc)
-  - Best grade of 2nd year (out of 320 students)
+  - **Faculty Prize — best grade in a 300-student cohort**
+  - Best grade in 2nd year (out of 320 students)
   - Exchange scholarship to HEC Montréal
 
-### Profile bio (from CV — can be polished for site)
+### Profile bio (CV version — should be polished and shortened for site)
 
 > AI & Music-Tech Product Leader with 10+ years building SaaS for Music Rights, Royalties & Data-Driven Products, using technology to make the music ecosystem smarter, faster, and more accountable.
 >
@@ -155,37 +196,39 @@ Anchor IDs in nav (must match): `#work`, `#consulting`, `#festipal`, `#projects`
 
 ---
 
-## Work experience (with metrics for site copy)
+## Work experience (B2B SaaS track — for Selected Work + Hire-me-full-time CTA)
 
 ### Revelator — Senior PM, AI & Distribution Data Analytics · 2024–2025
+*B2B SaaS for music distributors and labels.*
 
-- Led the AI roadmap, identifying high-impact opportunities across product suite via deep audits of internal systems and customer workflows
+- Led the AI roadmap, identifying high-impact opportunities across the product suite via deep audits of internal systems and customer workflows
 - Trained deep learning models that automatically flag suspicious streams and files (fraud detection)
 - Developed LLM- and MCP-powered products including real-time Insight Reports
-- Structured internal data to build a Knowledge Base for an AI support chatbot
+- Structured internal data to build a Knowledge Base for an AI support chatbot (RAG architecture)
 - Led complete revamp of client-facing dashboards and analytics tools
-- Created a unified, actionable Entity Relationship Diagram serving as foundation for backend architecture and front-end UX (new types of rights and assets)
+- Created a unified, actionable Entity Relationship Diagram serving as foundation for backend architecture and front-end UX
 - Hands-on Snowflake / SQL analyzing DSP reports (Spotify, YouTube, Meta), turning multivariate data into actionable UX flows
 
 ### Utopia Music — Senior PM, R&D · Content Recognition Tech · 2022–2024
+*B2B SaaS for monitoring, rights, royalties.*
 
 - Managed fully remote, distributed team of up to **12 engineers and data scientists**
-- Defined priorities and facilitated squad operations to build global music monitoring tech (Back-End, Front-End, R&D, Data)
+- Defined priorities and facilitated squad operations to build global music monitoring tech (BE, FE, R&D, Data)
 - **Founded the R&D department** and led it through specs & roadmaps
 - Deployed best-in-class **Automatic Content Recognition AI** on **45,000 radios and 1,500 TVs** scanned in real time
 - Built wireframes for end-user webapp and dashboards
 - Implemented Agile practices and tools (JIRA, Miro, Slack, Scrum)
 
-### BMAT — Product Manager, Music Monitoring & Royalties · France · 2016–2022
+### BMAT — PM, Music Monitoring & Royalties · France · 2016–2022
+*B2B SaaS for collective management organisations.*
 
 - Spearheaded TV and Radio monitoring system for **SPRE** (French neighbouring rights society)
-- **Doubled revenues to €500K / year**
+- **Doubled SPRE project revenues to €500K / year**
 - **Reduced costs by 80%** through automations
 - Defined specs, built roadmaps, prioritized backlogs, streamlined workflows
 - Product Owner on dynamic, complex project — interface between client, engineering, leadership
 - Coordinated cross-functional teams (BE, FE, R&D, Operations) within Agile/Scrum
 - Recruited and trained team of 5 freelancers
-- Attended major industry events for biz dev
 
 ### Earlier roles
 
@@ -199,33 +242,34 @@ Anchor IDs in nav (must match): `#work`, `#consulting`, `#festipal`, `#projects`
 
 ---
 
-## Skills
+## Stack & specialisms
 
-### Product / Strategy
+*This block matches the GitHub profile README exactly. Keep them in sync.*
 
-- Music Data, Copyright & Royalty Flows — DDEX/ERN, CMOs/PROs Reporting, DSPs, Distribution
-- Agile & Remote Work Tools — JIRA, Miro, Slack, Scrum, Google Suite
-- Stakeholder management, roadmap, backlog prioritization
+### AI-augmented PM
+LLMs / MCP / RAG in production · AI evals · vector databases (Milvus) · AI-augmented workflows (Cursor, Claude Code, ChatGPT) · roadmaps, specs, backlogs · distributed-team leadership
 
-### Data / Analysis
+### Music-tech domain
+DDEX / ERN · CMOs / PROs reporting · DSPs (Spotify, YouTube, Meta, Apple) · Automatic Content Recognition · royalty and rights flows · Web3 and smart contracts for music (Allfeat)
 
-- Data Analysis & BI — Excel, Tableau, Looker Studio, SQL Basics
-- Advanced Statistical Analysis — Stata, Eviews, Matlab, Python Basics
-- Snowflake (hands-on at Revelator)
+### APIs & integrations
+REST · OpenAPI / Swagger · Postman · OAuth · webhooks · Stripe (payment processing) · Docusign (e-signature) · ERD modelling
 
-### AI / Deep Learning
+### Build & deploy
+Next.js · React · TypeScript · Tailwind · Framer Motion · Figma · UI / UX · WordPress · Strapi (headless CMS) · Vercel · Netlify · Supabase · mobile and web prototypes
 
-- Theory & Applications — Linear Algebra, TensorFlow Basics
-- Applied LLMs and MCP for product features
+### Data
+Snowflake · BigQuery (basics) · SQL · Python (basics) · TensorFlow (basics) · Tableau · Looker Studio · Stata
 
-### Build / Prototype
+### Infrastructure literacy
+GCP · Kubernetes · Docker (working knowledge — comfortable in conversations with platform engineering)
 
-- Phone & Web Apps — Figma, Canva, Zeplin, Strapi, Adobe, UI/UX Basics
-- Vibe coding — Next.js, React, Tailwind
+### Ways of working with engineering teams
+Git / GitHub flow · feature branches · PR-driven development · code review · semantic versioning · async-first · distributed remote teams across timezones · Agile / Scrum · JIRA · Linear · Notion · Miro · Slack · VS Code
 
 ---
 
-## Consulting work
+## Consulting work (proof for Music-Tech Advisory offering)
 
 ### ICE — https://www.iceservices.com/
 
@@ -237,17 +281,17 @@ Music technology patent advisory for submission and review in the EU and US.
 
 ### Allfeat — https://allfeat.org/
 
-Reviewed and edited whitepaper, advised on strategy for blockchain music tech company.
+Reviewed and edited whitepaper, advised on strategy for blockchain music tech company. Smart contracts exposure.
 
 ### nestmicrofest.com — http://nestmicrofest.com/
 
-Administrator of the website, handled all payment platforms.
+Administrator of the website, handled all payment platforms (Stripe).
 
 ---
 
-## Entrepreneurial projects
+## Entrepreneurial projects (B2C track + operator credentials)
 
-### NEST Festival (Founder & CEO)
+### NEST Festival — Founder & CEO
 
 - €70K+ budget
 - 22 artists (8 internationals)
@@ -255,13 +299,14 @@ Administrator of the website, handled all payment platforms.
 - Indirect manager of 30+ collaborators
 - 500+ guests expected for 5th edition
 
-### CMYK Music YouTube Channel (Founder)
+### CMYK Music YouTube Channel — Founder
 
-- 70M+ views
-- 140K+ subscribers
+- **79M+ views**
+- **4.3M hours of watch time** *(roughly 490 years of cumulative human attention — strongest signal on the channel)*
+- **142k+ subscribers**
 - Curated music selections / mixes
 
-### Kommuna Events & Label (Co-Founder)
+### Kommuna Events & Label — Co-Founder
 
 - 12 vinyl releases
 - 5,000+ copies sold worldwide
@@ -279,12 +324,13 @@ Administrator of the website, handled all payment platforms.
 
 ---
 
-## FestiPal (flagship side project)
+## FestiPal (flagship build proof)
 
 - Eric had the **idea**, built the **concept**, **mobile app**, **web app**, **website**, **prototypes**, and **front-end** end-to-end
 - Looking to launch soon
-- GitHub repo exists (Eric to provide URL + screenshots)
-- **Should get the largest visual treatment on the site** — proves the "I can build, not just spec" narrative and is the strongest signal for prototype-gig clients
+- GitHub repo exists (Eric to provide URL + screenshots + product description)
+- **Should get the largest visual treatment on the site** — this is the single strongest signal for the "Apps & Prototypes" service offering. If the site converts a prototype client, FestiPal is doing it.
+- *TODO: Eric to write 1–2 sentences describing what FestiPal does, who it's for, and the primary use case. Without this, the section copy will be generic.*
 
 ---
 
@@ -296,15 +342,18 @@ When extending this site:
 2. **Use Tailwind utilities** `font-display`, `font-body`, `font-mono` — these come from the @theme block in `globals.css`.
 3. **Icons**: lucide-react only.
 4. **Animations**: Framer Motion. One orchestrated reveal per section, not scattered micro-interactions.
-5. **Section anchor IDs** must match the navigation: `#work`, `#consulting`, `#festipal`, `#projects`, `#contact`.
+5. **Section anchor IDs** must match the navigation: `#services`, `#work`, `#consulting`, `#festipal`, `#projects`, `#contact`.
 6. **Section header pattern**: `[ NN / Section Name ]` mono label, then Fraunces display title, then optional italic subtitle, then a rule.
 7. **Responsive**: Mobile-first, use `md:` breakpoint as default desktop transition.
-8. **Copy tone**: confident but not corporate. Music-magazine-meets-product-blog. Use specific numbers (€500K, 45,000 radios, 70M views, 5,000 tracks) — they do the heavy lifting.
-9. **No emojis** unless decorative. Use unicode arrows (`→`, `↳`, `↗`) for editorial flavor.
-10. **Don't add new fonts** without discussing — three is the limit.
-11. **Don't use generic AI portfolio aesthetics** (purple gradients, Space Grotesk, glassmorphism, geometric shapes floating). Stay in the editorial / vinyl lane.
-12. **Eric is vibe coding, not engineering** — explain changes in plain language, prefer simple solutions over clever abstractions, and offer file paths + line ranges when suggesting edits.
-13. **Project uses `app/` at project root, NOT `src/app/`**. Components live in `app/components/`.
+8. **Copy tone**: confident but not corporate. Music-magazine-meets-product-blog. Use specific numbers (€500K, 45,000 radios, 79M views, 4.3M hours, 5,000 tracks) — they do the heavy lifting.
+9. **Lead with "AI-augmented"** when describing Eric's PM work — it's the differentiated positioning, not "PM who knows AI."
+10. **B2B and B2C** should both appear — Eric's dual fluency is a feature, not a footnote.
+11. **Honest qualifiers required** — for infrastructure (GCP, K8s, Docker), data tools (Python, BigQuery), and AI tools (TensorFlow), use "basics" or "working knowledge." Do NOT inflate to "expert."
+12. **No emoji** unless decorative (like the `→` after `ED`). Use unicode arrows (`→`, `↳`, `↗`) for editorial flavor.
+13. **Don't add new fonts** without discussing — three is the limit.
+14. **Don't use generic AI portfolio aesthetics** (purple gradients, Space Grotesk, glassmorphism, geometric shapes floating). Stay in the editorial / vinyl lane.
+15. **Eric is vibe coding, not engineering** — explain changes in plain language, prefer simple solutions over clever abstractions, and offer file paths + line ranges when suggesting edits.
+16. **Project uses `app/` at project root, NOT `src/app/`**. Components live in `app/components/`.
 
 ---
 
@@ -314,6 +363,13 @@ When extending this site:
 - `app/layout.tsx` — Root layout with Fraunces, DM Sans, JetBrains Mono via `next/font/google`
 - `app/page.tsx` — Composes all sections
 - `app/components/` — All section components
+- `CLAUDE.md` — This file
+
+---
+
+## Related artifacts (kept in sync)
+
+- **GitHub profile README** — at `github.com/EricDenis01/EricDenis01` (the special profile repo). Public-facing summary of the same positioning. Stack & specialisms section must stay identical between this CLAUDE.md and the README. When updating one, update the other.
 
 ---
 
@@ -323,22 +379,26 @@ Freelance platforms to register on, in priority order:
 
 - **Tier 1 (this week)**: Malt (strong in FR/ES), Contra, LinkedIn Open to Work + Services
 - **Tier 2 (later)**: Toptal, Wellfound, YunoJuno
-- **Tier 3 (specialist)**: Catalant, GLG, AlphaSights — expert networks paying €200–500/hr for music-industry expert calls. Eric's consulting profile (ICE / Musimap / Allfeat) makes him a strong fit.
+- **Tier 3 (specialist)**: Catalant, GLG, AlphaSights — expert networks paying €200–500/hr for music-industry expert calls. Eric's consulting profile (ICE / Musimap / Allfeat) makes him a strong fit here.
+
+For each platform, the profile copy should mirror this CLAUDE.md positioning: lead with "AI-augmented PM," lead the build offerings with FestiPal as the example, and feature the music-tech advisory track as a separate, premium offering.
 
 ---
 
 ## Asset wishlist (Eric to provide)
 
 - Professional photo for About section (CV photo works as a starting point)
+- FestiPal product description (1–2 sentences: what it does, for whom, primary use case)
 - FestiPal screenshots (mobile app, web app, website, prototypes)
 - FestiPal GitHub URL
 - NEST Festival photos (best 3–5)
 - Vinyl release covers (Kommuna Records)
 - CMYK YouTube thumbnails / channel banner
-- Kanvas.fm visual identity (from Internet Archive if needed — Wayback Machine has snapshots)
+- Kanvas.fm visual identity (from Internet Archive / Wayback Machine if needed)
 - Logos for ICE, Musimap, Allfeat, nestmicrofest (with permission for case studies)
 - Consulting case study confirmation — what Eric is permitted to share publicly about each engagement
+- Day rate / project rate ranges Eric is comfortable publishing or quoting privately
 
 ---
 
-*Last updated: 2026-05-03. Update this file whenever positioning, content, or conventions change.*
+*Last updated: 2026-05-03. Update this file whenever positioning, content, or conventions change. Keep in sync with the GitHub profile README.*

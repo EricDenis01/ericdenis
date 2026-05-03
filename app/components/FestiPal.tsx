@@ -49,7 +49,7 @@ export default function FestiPal() {
     >
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="04"
+          number="05"
           label="Flagship · FestiPal"
           title={
             <>

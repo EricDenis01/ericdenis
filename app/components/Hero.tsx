@@ -58,10 +58,10 @@ export default function Hero() {
           className="mt-8 max-w-2xl font-display text-2xl italic leading-snug text-[var(--color-paper-muted)] md:text-3xl"
           style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
         >
-          A product leader at the intersection of{" "}
-          <span className="text-[var(--color-paper)]">AI</span>,{" "}
-          <span className="text-[var(--color-paper)]">music rights</span>, and{" "}
-          <span className="text-[var(--color-paper)]">builder culture</span>.
+          An <span className="text-[var(--color-paper)]">AI-augmented</span>{" "}
+          product manager building at the intersection of{" "}
+          <span className="text-[var(--color-paper)]">music</span> and{" "}
+          <span className="text-[var(--color-paper)]">technology</span>.
         </motion.p>
 
         {/* Dual CTAs */}

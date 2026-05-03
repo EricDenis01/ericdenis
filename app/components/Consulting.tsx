@@ -43,15 +43,15 @@ const ENGAGEMENTS: Engagement[] = [
     client: "Allfeat",
     url: "https://allfeat.org/",
     domain: "allfeat.org",
-    scope: "Whitepaper + strategy",
-    body: "Reviewed and edited the whitepaper, advised on strategy for a blockchain music-tech protocol bridging rights-holder data and on-chain primitives.",
+    scope: "Whitepaper · strategy · smart contracts",
+    body: "Reviewed and edited the whitepaper, advised on strategy for a blockchain music-tech protocol bridging rights-holder data and on-chain primitives. Smart contracts exposure throughout.",
   },
   {
     client: "NEST Microfest",
     url: "http://nestmicrofest.com/",
     domain: "nestmicrofest.com",
-    scope: "Site admin + payments",
-    body: "Administrator of the website and operator of the full payment stack — turning a small festival operation into a self-serve, ticketed experience.",
+    scope: "Site admin + Stripe payments",
+    body: "Administrator of the website and operator of the full payment stack — Stripe-powered ticketing turning a small festival operation into a self-serve experience.",
   },
 ];
 
@@ -60,7 +60,7 @@ export default function Consulting() {
     <section id="consulting" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="03"
+          number="04"
           label="Consulting"
           title={
             <>

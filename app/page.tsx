@@ -1,6 +1,7 @@
 import Navigation from "./components/Navigation";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Services from "./components/Services";
 import SelectedWork from "./components/SelectedWork";
 import Consulting from "./components/Consulting";
 import FestiPal from "./components/FestiPal";
@@ -16,6 +17,7 @@ export default function Home() {
       <main className="relative z-10">
         <Hero />
         <About />
+        <Services />
         <SelectedWork />
         <Consulting />
         <FestiPal />

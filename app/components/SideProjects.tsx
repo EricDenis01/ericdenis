@@ -41,10 +41,11 @@ const PROJECTS: Project[] = [
     title: "CMYK Music",
     role: "Founder · YouTube",
     metrics: [
-      { value: "70M+", label: "views" },
-      { value: "140K+", label: "subscribers" },
+      { value: "79M+", label: "views" },
+      { value: "4.3M", label: "hours watched · ~490 yrs" },
+      { value: "142K+", label: "subscribers" },
     ],
-    body: "Hand-curated music selections and mixes. A long-running channel that built one of the bigger underground audiences in its niche.",
+    body: "Hand-curated music selections and mixes. 4.3 million hours of cumulative attention — roughly 490 years — is the strongest signal: people don't just click, they stay.",
   },
   {
     title: "Kommuna Records & Events",
@@ -72,7 +73,7 @@ export default function SideProjects() {
     <section id="projects" className="relative px-6 py-24 md:px-10 md:py-32">
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
-          number="05"
+          number="06"
           label="Entrepreneurial"
           title={
             <>

@@ -4,10 +4,12 @@ import Link from "next/link";
 
 const NAV = [
   { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "Consulting", href: "#consulting" },
   { label: "FestiPal", href: "#festipal" },
   { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -29,7 +31,7 @@ export default function Footer() {
           </Link>
           <p className="mt-4 max-w-md font-display text-base italic leading-snug text-[var(--color-paper-muted)]"
              style={{ fontVariationSettings: "'opsz' 24, 'SOFT' 50, 'WONK' 0" }}>
-            Product leader at the intersection of AI, music rights, and builder culture.
+            An AI-augmented product manager building at the intersection of music and technology.
           </p>
         </div>
 
