@@ -41,19 +41,42 @@
 }
 
 /* -----------------------------------------------------------------------------
-   Page-level layered gradients — vintage poster vibe.
-   Three large radial washes sit fixed behind everything: amber top-left,
-   plum top-right, sage bottom-center. Subtle but adds real depth + colour
-   variety to a near-cream background.
+   Page-level animated gradient mesh — vintage poster meets premium SaaS.
+   Four oversized radial blobs (amber, plum, sage, gold) sit on a fixed
+   pseudo-element behind everything. The layer slowly drifts + scales on
+   a 30s loop so the page is never quite static. Heavy blur softens edges.
+   `prefers-reduced-motion` disables the drift; the colours stay.
 ----------------------------------------------------------------------------- */
 body {
+  background: var(--color-ink);
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -1;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse 70% 50% at 15% 0%, rgba(232, 118, 92, 0.16), transparent 60%),
-    radial-gradient(ellipse 60% 45% at 95% 5%, rgba(94, 58, 82, 0.14), transparent 60%),
-    radial-gradient(ellipse 80% 40% at 50% 105%, rgba(90, 122, 110, 0.14), transparent 60%),
-    radial-gradient(ellipse 50% 30% at 100% 60%, rgba(217, 152, 90, 0.12), transparent 60%),
-    var(--color-ink);
-  background-attachment: fixed;
+    radial-gradient(circle 38vmax at 18% 12%, rgba(232, 118, 92, 0.30), transparent 60%),
+    radial-gradient(circle 32vmax at 88% 18%, rgba(94, 58, 82, 0.26), transparent 60%),
+    radial-gradient(circle 36vmax at 50% 95%, rgba(90, 122, 110, 0.26), transparent 60%),
+    radial-gradient(circle 26vmax at 95% 65%, rgba(217, 152, 90, 0.22), transparent 60%);
+  filter: blur(20px);
+  animation: mesh-drift 30s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes mesh-drift {
+  0%   { transform: translate(-3%, -2%) rotate(0deg) scale(1); }
+  50%  { transform: translate(2%, 3%)  rotate(2deg) scale(1.04); }
+  100% { transform: translate(-3%, -2%) rotate(0deg) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before { animation: none; }
 }
 
 html {
@@ -127,17 +150,96 @@ body {
   to   { transform: rotate(360deg); }
 }
 
-/* Card hover lift — soft warm shadow on cream */
+/* -----------------------------------------------------------------------------
+   Premium card — glass surface over the gradient mesh + multi-color
+   gradient border that fades in on hover. Plus warm shadow lift.
+   Used on services / consulting / project / contact / skill cards.
+----------------------------------------------------------------------------- */
 .card-lift {
-  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              border-color 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
-              box-shadow 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  position: relative;
+  background: rgba(246, 241, 226, 0.55);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  transition: transform 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              border-color 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              box-shadow 400ms cubic-bezier(0.2, 0.8, 0.2, 1),
+              background-color 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+
+/* Gradient ring — sits exactly on the card's border, fades in on hover */
+.card-lift::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg,
+    var(--color-amber) 0%,
+    var(--color-plum) 50%,
+    var(--color-sage) 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  transition: opacity 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
 .card-lift:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  background: rgba(246, 241, 226, 0.7);
   box-shadow:
-    0 20px 40px -20px rgba(26, 20, 16, 0.18),
-    0 8px 20px -10px rgba(200, 85, 61, 0.12);
+    0 30px 60px -25px rgba(26, 20, 16, 0.22),
+    0 12px 30px -10px rgba(200, 85, 61, 0.20);
+}
+
+.card-lift:hover::before {
+  opacity: 1;
+}
+
+/* Subtle corner glow — adds dimension on the gradient ring */
+.card-lift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(232, 118, 92, 0.10),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.card-lift:hover::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-lift,
+  .card-lift::before,
+  .card-lift::after {
+    transition: none;
+  }
+  .card-lift:hover {
+    transform: none;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   Halftone — vintage print accent. Apply as a backdrop layer behind a section
+   header or a hero. Use opacity to dial intensity.
+----------------------------------------------------------------------------- */
+.halftone {
+  background-image: radial-gradient(circle, rgba(26, 20, 16, 0.18) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
 }
 
 /* Gradient-text helper — for picking out a single word in headlines */

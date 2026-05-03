@@ -37,7 +37,11 @@ export default function FloatingContact() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 16, scale: 0.95 }}
           transition={{ duration: 0.35, ease: EASE }}
-          className="group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full bg-[var(--color-amber)] px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-ink)] shadow-lg shadow-[var(--color-ink)]/40 ring-1 ring-[var(--color-ink)]/10 transition-colors duration-300 hover:bg-[var(--color-paper)] md:bottom-8 md:right-8 md:px-6 md:py-3.5"
+          className="group fixed bottom-5 right-5 z-40 inline-flex items-center gap-2 rounded-full px-5 py-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-ink)] shadow-xl shadow-[var(--color-amber)]/30 ring-1 ring-[var(--color-paper)]/10 transition-all duration-300 hover:scale-[1.03] hover:shadow-amber-500/40 md:bottom-8 md:right-8 md:px-6 md:py-3.5"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--color-amber) 0%, var(--color-plum) 100%)",
+          }}
         >
           Hire me
           <ArrowUpRight
