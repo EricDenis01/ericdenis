@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import type { Variants } from "framer-motion";
+import SectionHeader from "./SectionHeader";
 
 function LinkedinIcon({ size = 12 }: { size?: number }) {
   return (
@@ -32,8 +34,6 @@ function GithubIconSm({ size = 12 }: { size?: number }) {
     </svg>
   );
 }
-import type { Variants } from "framer-motion";
-import SectionHeader from "./SectionHeader";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;
 
@@ -46,12 +46,31 @@ const REVEAL: Variants = {
   }),
 };
 
+// Email is split + reassembled so naive crawlers harvesting the static HTML
+// can't pull it out as a single string. The mailto: is also assembled at
+// click time. Real users get a one-click experience.
+const EMAIL_USER = "contact";
+const EMAIL_HOST = "ericdenis.com";
+
+function emailHandler(subject?: string) {
+  return (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const target = `mailto:${EMAIL_USER}@${EMAIL_HOST}${
+      subject ? `?subject=${encodeURIComponent(subject)}` : ""
+    }`;
+    window.location.href = target;
+  };
+}
+
+const VISIBLE_EMAIL = `${EMAIL_USER}[at]${EMAIL_HOST.replace(".", "[dot]")}`;
+
 const CONTACT_ITEMS = [
   {
     icon: Mail,
     label: "Email",
-    value: "eric.denis01@gmail.com",
-    href: "mailto:eric.denis01@gmail.com",
+    value: VISIBLE_EMAIL,
+    onClick: emailHandler(),
+    href: "#",
   },
   {
     icon: LinkedinIcon,
@@ -66,17 +85,11 @@ const CONTACT_ITEMS = [
     href: "https://github.com/EricDenis01",
   },
   {
-    icon: Phone,
-    label: "Phone",
-    value: "+34 633 474 375",
-    href: "tel:+34633474375",
-  },
-  {
     icon: MapPin,
-    label: "Location",
-    value: "Barcelona — open to remote",
+    label: "Based",
+    value: "Barcelona — remote-first",
   },
-];
+] as const;
 
 export default function Contact() {
   return (
@@ -90,11 +103,7 @@ export default function Contact() {
               Let&apos;s <span className="text-[var(--color-amber)]">work together</span>.
             </>
           }
-          subtitle={
-            <>
-              Two doors. Same person. Pick the one that fits.
-            </>
-          }
+          subtitle={<>Two doors. Same person. Pick the one that fits.</>}
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -104,7 +113,8 @@ export default function Contact() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
-            href="mailto:eric.denis01@gmail.com?subject=Senior%20PM%20role%20%E2%80%94%20conversation"
+            href="#"
+            onClick={emailHandler("Senior PM role — conversation")}
             className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
@@ -118,7 +128,8 @@ export default function Contact() {
                 Hire me full-time
               </h3>
               <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Senior PM roles at AI / music-tech companies. Bring the trifecta —
+                Senior PM roles at AI / music-tech companies. Remote-first,
+                10+ years before it became fashionable. Bring the trifecta —
                 product expertise, industry operator experience, and the ability
                 to ship code — to your team.
               </p>
@@ -138,7 +149,8 @@ export default function Contact() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
-            href="mailto:eric.denis01@gmail.com?subject=Build%20me%20a%20prototype"
+            href="#"
+            onClick={emailHandler("Build me a prototype")}
             className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
@@ -173,27 +185,30 @@ export default function Contact() {
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={REVEAL}
-          className="mt-16 grid gap-6 border-t border-[var(--color-rule)] pt-10 sm:grid-cols-2 md:grid-cols-5"
+          className="mt-16 grid gap-6 border-t border-[var(--color-rule)] pt-10 sm:grid-cols-2 md:grid-cols-4"
         >
-          {CONTACT_ITEMS.map(({ icon: Icon, label, value, href }) => {
+          {CONTACT_ITEMS.map((item) => {
+            const Icon = item.icon;
             const inner = (
               <>
                 <span className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-muted)]">
                   <Icon size={12} aria-hidden />
-                  {label}
+                  {item.label}
                 </span>
                 <span className="mt-3 block text-sm text-[var(--color-paper)]">
-                  {value}
+                  {item.value}
                 </span>
               </>
             );
+            const isLink = "href" in item && item.href;
             return (
-              <li key={label}>
-                {href ? (
+              <li key={item.label}>
+                {isLink ? (
                   <a
-                    href={href}
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noreferrer" : undefined}
+                    href={item.href}
+                    onClick={"onClick" in item ? item.onClick : undefined}
+                    target={item.href.startsWith("http") ? "_blank" : undefined}
+                    rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                     className="group block transition-colors duration-300 hover:text-[var(--color-amber)]"
                   >
                     {inner}

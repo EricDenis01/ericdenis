@@ -110,7 +110,7 @@ export default function Hero() {
         <div className="flex items-center gap-6">
           <span>10+ yrs in music tech</span>
           <span className="hidden md:inline">·</span>
-          <span>Currently 2026</span>
+          <span>Remote-first since 2016</span>
         </div>
         <span className="hidden md:inline">↓ Scroll</span>
       </motion.div>

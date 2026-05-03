@@ -164,9 +164,11 @@ Anchor IDs in nav (must match): `#services`, `#work`, `#consulting`, `#festipal`
 ### Personal info
 
 - **Name**: Eric Denis
-- **Email**: eric.denis01@gmail.com
-- **Phone**: +34 633 474 375
+- **Email (public)**: contact@ericdenis.com — domain mailbox at OVH, this is what the site exposes
+- **Email (private)**: eric.denis01@gmail.com — internal only, NOT to appear on public surfaces
+- **Phone**: NOT public. Eric prefers it kept off the site and any GitHub-rendered files.
 - **Location**: Barcelona, Spain
+- **Working style**: Remote-first since 2016 (10+ years pre-COVID)
 - **LinkedIn**: https://www.linkedin.com/in/eric-denis-b977028a/
 - **GitHub**: https://github.com/EricDenis01
 
