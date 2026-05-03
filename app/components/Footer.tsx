@@ -31,7 +31,8 @@ export default function Footer() {
           </Link>
           <p className="mt-4 max-w-md font-display text-base italic leading-snug text-[var(--color-paper-muted)]"
              style={{ fontVariationSettings: "'opsz' 24, 'SOFT' 50, 'WONK' 0" }}>
-            An AI-augmented product manager building at the intersection of music and technology.
+            Senior product manager. Music tech, ten years.
+            Festival CEO and label co-founder on the side.
           </p>
         </div>
 
@@ -54,14 +55,14 @@ export default function Footer() {
           </ul>
         </nav>
 
-        {/* Colophon meta */}
+        {/* Build credits */}
         <div>
           <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-muted)]">
-            Colophon
+            Built with
           </span>
           <ul className="mt-4 space-y-2 font-mono text-xs uppercase tracking-[0.15em] text-[var(--color-paper-muted)]">
-            <li>Set in Fraunces, DM Sans &amp; JetBrains Mono</li>
-            <li>Built with Next.js · Tailwind · Framer Motion</li>
+            <li>Next.js · Tailwind · Framer Motion</li>
+            <li>Fraunces · DM Sans · JetBrains Mono</li>
             <li>Hosted on Vercel</li>
           </ul>
         </div>
@@ -69,7 +70,7 @@ export default function Footer() {
 
       <div className="mx-auto mt-12 flex w-full max-w-6xl flex-col items-start justify-between gap-2 border-t border-[var(--color-rule)] pt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)] md:flex-row md:items-center">
         <span>© {year} Eric Denis · Barcelona</span>
-        <span>Vol. 01 · Edition 2026</span>
+        <span>Open to work</span>
       </div>
     </footer>
   );

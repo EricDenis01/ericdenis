@@ -100,10 +100,10 @@ export default function Contact() {
           label="Contact"
           title={
             <>
-              Let&apos;s <span className="text-[var(--color-amber)]">work together</span>.
+              Get in <span className="text-[var(--color-amber)]">touch</span>.
             </>
           }
-          subtitle={<>Two doors. Same person. Pick the one that fits.</>}
+          subtitle="Both doors land in the same inbox. Pick the one that fits — I'll know which lane you're in from the subject line."
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -114,24 +114,22 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
             href="#"
-            onClick={emailHandler("Senior PM role — conversation")}
+            onClick={emailHandler("Hire me · full-time")}
             className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                Door 01
+                01
               </span>
               <h3
                 className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
                 style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
               >
-                Hire me full-time
+                Hire me · full-time
               </h3>
               <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Senior PM roles at AI / music-tech companies. Remote-first,
-                10+ years before it became fashionable. Bring the trifecta —
-                product expertise, industry operator experience, and the ability
-                to ship code — to your team.
+                Senior PM roles. Music tech, AI products, anything that needs a
+                product lead who&apos;ll also write code. Remote-first since 2016.
               </p>
             </div>
             <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-paper)]">
@@ -150,23 +148,23 @@ export default function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
             href="#"
-            onClick={emailHandler("Build me a prototype")}
+            onClick={emailHandler("Hire me · per project")}
             className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                Door 02
+                02
               </span>
               <h3
                 className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
                 style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
               >
-                Build me a prototype
+                Hire me · per project
               </h3>
               <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Websites, mobile and web app prototypes, vibe-coded fast. Or
-                expert calls on music tech, royalties, and rights — exactly the
-                kind of niche advisory I&apos;ve done for ICE, Musimap, Allfeat.
+                Websites, web and mobile prototypes, MVPs. Or an expert call on
+                music tech, royalties, or rights — the kind of advisory I&apos;ve
+                done for ICE, Musimap, and Allfeat.
               </p>
             </div>
             <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-paper)]">

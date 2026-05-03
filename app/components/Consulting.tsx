@@ -64,12 +64,11 @@ export default function Consulting() {
           label="Consulting"
           title={
             <>
-              Niche advisory at the
-              <br />
-              <span className="text-[var(--color-amber)]">executive level</span>.
+              Music-tech{" "}
+              <span className="text-[var(--color-amber)]">advisory</span>.
             </>
           }
-          subtitle="Brought in for the corners of music tech most product people never touch — patents, blockchain rights, exec investment calls."
+          subtitle="Patents, investment calls, blockchain rights, whitepapers. Brought in for the corners most product people never touch."
         />
 
         <div className="grid gap-6 md:grid-cols-2">

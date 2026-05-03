@@ -37,7 +37,7 @@ export default async function OpengraphImage() {
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
             <div style={{ width: 48, height: 1, background: "rgba(245,241,232,0.6)" }} />
-            <span>Vol. 01 · Eric Denis</span>
+            <span>Senior PM · Music tech</span>
           </div>
           <span>ericdenis.com</span>
         </div>
@@ -71,7 +71,7 @@ export default async function OpengraphImage() {
               display: "flex",
             }}
           >
-            An AI-augmented product manager building at the intersection of music and technology.
+            I make software for the music business. Ten years, three companies. Plus a festival, a label, and the code to build them.
           </div>
         </div>
 
@@ -90,8 +90,8 @@ export default async function OpengraphImage() {
             paddingTop: 24,
           }}
         >
-          <span>Barcelona — 41.38°N, 2.17°E</span>
-          <span>10+ yrs in music tech · Open to work</span>
+          <span>Barcelona · Remote-first since 2016</span>
+          <span>Open to work · ericdenis.com</span>
         </div>
       </div>
     ),

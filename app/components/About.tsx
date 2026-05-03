@@ -18,19 +18,19 @@ const REVEAL: Variants = {
 
 const PILLARS = [
   {
-    tag: "AI-augmented PM",
-    title: "AI as a multiplier, not a buzzword",
-    body: "I use AI to multiply my PM craft — specs, research, analysis — and I ship AI features into products. LLMs, MCP, and deep learning shipped to production at Revelator.",
+    tag: "Product",
+    title: "Senior PM in music tech.",
+    body: "BMAT, Utopia Music, Revelator. Royalty flows, content recognition, DSP analytics, AI roadmaps. I lead the product, prioritise the backlog, and ship to PROs, distributors, and the labels that actually use this stuff.",
   },
   {
-    tag: "Music-tech specialist",
-    title: "10+ years in rights & royalties",
-    body: "BMAT, Utopia Music, Revelator. ACR, royalty flows, DSP analytics, copyright. Shipped to PROs, distributors, and the world's biggest rights-holders.",
+    tag: "Operator",
+    title: "I run music ventures too.",
+    body: "Founder & CEO of NEST Festival. Co-founder of Kommuna Records. CMYK Music on YouTube — 142k subscribers, 79M views. The same business my software is supposed to serve.",
   },
   {
-    tag: "Hands-on builder",
-    title: "I design and code",
-    body: "Front-end, UI/UX, mobile and web prototypes, websites — vibe-coded end-to-end. FestiPal: concept → mobile app → web app → prototype, all my work.",
+    tag: "Builder",
+    title: "I write code, not just specs.",
+    body: "FestiPal — the event management OS — concept, web app, mobile app, prototypes, all built end-to-end. Same with this site. I prefer when the prototype that proves an idea is the actual prototype, not a deck.",
   },
 ];
 
@@ -46,17 +46,12 @@ export default function About() {
           label="About"
           title={
             <>
-              Three crafts.
+              Music product, music ventures,
               <br />
-              <span className="text-[var(--color-amber)]">One operator.</span>
+              <span className="text-[var(--color-amber)]">code</span>.
             </>
           }
-          subtitle={
-            <>
-              Most senior PMs in music-tech have one of these. I have all three —
-              and they reinforce each other.
-            </>
-          }
+          subtitle="Three things, one person. They reinforce each other more than they conflict."
         />
 
         <div className="grid gap-12 md:grid-cols-[auto_1fr] md:gap-16 md:items-start">
@@ -117,9 +112,9 @@ export default function About() {
         >
           <p className="max-w-3xl font-display text-xl italic leading-relaxed text-[var(--color-paper-muted)] md:text-2xl"
              style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}>
-            B2B SaaS by day for rights bodies and distributors, B2C music ventures
-            after hours — festival, label, YouTube channel. The dual fluency is
-            the point.
+            B2B SaaS for the music industry by day. Festival, label, and a music
+            channel after hours. I&apos;ve been on both sides of the table for
+            ten years.
           </p>
           <ul className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]">
             <li>Based — Barcelona</li>

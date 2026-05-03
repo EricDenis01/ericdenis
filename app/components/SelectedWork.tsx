@@ -144,13 +144,15 @@ export default function SelectedWork() {
       <div className="mx-auto w-full max-w-6xl">
         <SectionHeader
           number="03"
-          label="Selected Work"
+          label="Selected work"
           title={
             <>
-              Where I&apos;ve <span className="text-[var(--color-amber)]">shipped</span>.
+              Three companies.
+              <br />
+              <span className="text-[var(--color-amber)]">Ten years</span>.
             </>
           }
-          subtitle="Three roles, ten years, every layer of the music-rights stack — from royalty flows to content recognition AI."
+          subtitle="Music-rights monitoring, content recognition, AI roadmaps. The full stack."
         />
 
         <div>
