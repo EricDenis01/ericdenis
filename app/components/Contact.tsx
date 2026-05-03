@@ -115,7 +115,7 @@ export default function Contact() {
             variants={REVEAL}
             href="#"
             onClick={emailHandler("Hire me · full-time")}
-            className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
+            className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
@@ -149,7 +149,7 @@ export default function Contact() {
             variants={REVEAL}
             href="#"
             onClick={emailHandler("Hire me · per project")}
-            className="group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 transition-colors duration-300 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
+            className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
               <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">

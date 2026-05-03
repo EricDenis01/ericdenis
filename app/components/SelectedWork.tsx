@@ -147,12 +147,11 @@ export default function SelectedWork() {
           label="Selected work"
           title={
             <>
-              Three companies.
-              <br />
-              <span className="text-[var(--color-amber)]">Ten years</span>.
+              Where I&apos;ve{" "}
+              <span className="text-[var(--color-amber)]">shipped</span>.
             </>
           }
-          subtitle="Music-rights monitoring, content recognition, AI roadmaps. The full stack."
+          subtitle="BMAT, Utopia Music, Revelator. Music-rights monitoring, content recognition AI, distribution analytics."
         />
 
         <div>

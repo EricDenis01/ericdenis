@@ -22,6 +22,17 @@ export default function Hero() {
       id="top"
       className="relative isolate flex min-h-[100svh] flex-col justify-between overflow-hidden px-6 pb-12 pt-32 md:px-10 md:pb-16 md:pt-40"
     >
+      {/* Decorative spinning vinyl — anchored top-right, peeks behind the name */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.85, rotate: -15 }}
+        animate={{ opacity: 0.55, scale: 1, rotate: 0 }}
+        transition={{ duration: 1.5, ease: EASE, delay: 0.4 }}
+        aria-hidden
+        className="pointer-events-none absolute -right-24 top-16 z-0 h-[420px] w-[420px] md:-right-16 md:top-24 md:h-[560px] md:w-[560px]"
+      >
+        <div className="vinyl h-full w-full" />
+      </motion.div>
+
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center">
         {/* Eyebrow rule */}
         <motion.div
@@ -58,11 +69,9 @@ export default function Hero() {
           className="mt-8 max-w-2xl font-display text-2xl italic leading-snug text-[var(--color-paper-muted)] md:text-3xl"
           style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
         >
-          I make software for the music business.
-          Ten years, three companies. Plus a{" "}
-          <span className="text-[var(--color-paper)]">festival</span>, a{" "}
-          <span className="text-[var(--color-paper)]">label</span>, and the{" "}
-          <span className="text-[var(--color-paper)]">code</span> to build them.
+          An <span className="text-[var(--color-paper)]">AI-augmented product manager</span>{" "}
+          with a 360° view of the music industry — from rights bodies and
+          distributors to the artists, labels, and festivals they exist to serve.
         </motion.p>
 
         {/* Dual CTAs */}

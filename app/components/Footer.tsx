@@ -18,8 +18,8 @@ export default function Footer() {
 
   return (
     <footer className="relative border-t border-[var(--color-rule)] px-6 py-14 md:px-10">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
-        {/* Colophon */}
+      <div className="mx-auto grid w-full max-w-6xl gap-10 md:grid-cols-[1.6fr_1fr]">
+        {/* Wordmark + tagline */}
         <div>
           <Link
             href="#top"
@@ -31,8 +31,7 @@ export default function Footer() {
           </Link>
           <p className="mt-4 max-w-md font-display text-base italic leading-snug text-[var(--color-paper-muted)]"
              style={{ fontVariationSettings: "'opsz' 24, 'SOFT' 50, 'WONK' 0" }}>
-            Senior product manager. Music tech, ten years.
-            Festival CEO and label co-founder on the side.
+            AI-augmented product manager with a 360° view of the music industry.
           </p>
         </div>
 
@@ -54,18 +53,6 @@ export default function Footer() {
             ))}
           </ul>
         </nav>
-
-        {/* Build credits */}
-        <div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-muted)]">
-            Built with
-          </span>
-          <ul className="mt-4 space-y-2 font-mono text-xs uppercase tracking-[0.15em] text-[var(--color-paper-muted)]">
-            <li>Next.js · Tailwind · Framer Motion</li>
-            <li>Fraunces · DM Sans · JetBrains Mono</li>
-            <li>Hosted on Vercel</li>
-          </ul>
-        </div>
       </div>
 
       <div className="mx-auto mt-12 flex w-full max-w-6xl flex-col items-start justify-between gap-2 border-t border-[var(--color-rule)] pt-6 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)] md:flex-row md:items-center">

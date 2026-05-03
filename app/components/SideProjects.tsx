@@ -81,7 +81,8 @@ const PROJECTS: Project[] = [
     role: "Founder · web radio",
     metrics: [
       { value: "5,000+", label: "hand-curated tracks" },
-      { value: "24/7", label: "algorithmic web radio" },
+      { value: "Up to 500+", label: "monthly listeners" },
+      { value: "24/7", label: "algorithmic radio" },
     ],
     body:
       "A unique selection of mellow grooves. Self-hosted Icecast on a VPS, multi-platform distribution (web stream, YouTube algorithmic segments, SoundCloud archive), listed on Streema and myTuner. Discontinued as a station but the selection lives on through my chillout DJ sets around the EU.",
@@ -117,7 +118,7 @@ export default function SideProjects() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={REVEAL}
-              className={`group flex flex-col gap-6 border border-[var(--color-rule)] p-7 transition-colors duration-300 hover:border-[var(--color-paper-muted)] md:p-9 ${
+              className={`card-lift group flex flex-col gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] md:p-9 ${
                 p.span === "wide" ? "md:col-span-2" : ""
               }`}
             >

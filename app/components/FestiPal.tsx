@@ -35,41 +35,30 @@ function GithubIcon({ size = 14 }: { size?: number }) {
 }
 
 type Slide = {
+  type: "image" | "video";
   src: string;
   alt: string;
   caption: string;
-  w: number;
-  h: number;
 };
 
 const SLIDES: Slide[] = [
   {
+    type: "image",
     src: "/festipal/welcome-desktop.png",
     alt: "FestiPal — welcome onboarding, desktop",
     caption: "Onboarding · welcome",
-    w: 1920,
-    h: 1080,
   },
   {
+    type: "image",
     src: "/festipal/signup-desktop.png",
     alt: "FestiPal — sign-up flow, desktop",
     caption: "Sign-up · pick your lane",
-    w: 1920,
-    h: 1080,
   },
   {
+    type: "image",
     src: "/festipal/done-desktop.png",
     alt: "FestiPal — onboarding complete, desktop",
     caption: "Onboarding · complete",
-    w: 1920,
-    h: 1080,
-  },
-  {
-    src: "/festipal/welcome-mobile.png",
-    alt: "FestiPal — welcome onboarding, mobile",
-    caption: "Mobile · same flow, smaller surface",
-    w: 750,
-    h: 1334,
   },
 ];
 
@@ -79,12 +68,14 @@ function FestiPalSlider() {
 
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(() => setI((c) => (c + 1) % SLIDES.length), 5500);
+    const t = setInterval(() => setI((c) => (c + 1) % SLIDES.length), 3500);
     return () => clearInterval(t);
   }, [paused]);
 
   const prev = () => setI((c) => (c - 1 + SLIDES.length) % SLIDES.length);
   const next = () => setI((c) => (c + 1) % SLIDES.length);
+
+  const slide = SLIDES[i];
 
   return (
     <div
@@ -92,34 +83,51 @@ function FestiPalSlider() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slide stage */}
-      <div className="relative aspect-[16/10] overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
+      {/* Slide stage — 16:9 to match desktop screenshots */}
+      <div className="relative aspect-video w-full overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)] shadow-2xl shadow-[var(--color-amber)]/[0.04]">
         <AnimatePresence mode="wait">
           <motion.div
-            key={SLIDES[i].src}
-            initial={{ opacity: 0, scale: 1.02 }}
+            key={slide.src}
+            initial={{ opacity: 0, scale: 1.04 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.98 }}
-            transition={{ duration: 0.7, ease: EASE }}
-            className="absolute inset-0 flex items-center justify-center p-4 md:p-8"
+            exit={{ opacity: 0, scale: 0.97 }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="absolute inset-0"
           >
-            <Image
-              src={SLIDES[i].src}
-              alt={SLIDES[i].alt}
-              width={SLIDES[i].w}
-              height={SLIDES[i].h}
-              className="h-full w-auto max-w-full object-contain"
-              priority={i === 0}
-            />
+            {slide.type === "video" ? (
+              <video
+                src={slide.src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <Image
+                src={slide.src}
+                alt={slide.alt}
+                fill
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover"
+                priority={i === 0}
+              />
+            )}
           </motion.div>
         </AnimatePresence>
+
+        {/* Subtle vignette */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/40 via-transparent to-transparent"
+        />
 
         {/* Prev / Next */}
         <button
           type="button"
           onClick={prev}
           aria-label="Previous slide"
-          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/60 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-paper)] hover:text-[var(--color-paper)] md:left-5"
+          className="absolute left-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/70 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-all duration-300 hover:border-[var(--color-paper)] hover:bg-[var(--color-ink)]/90 hover:text-[var(--color-paper)] md:left-5"
         >
           <ChevronLeft size={18} />
         </button>
@@ -127,14 +135,14 @@ function FestiPalSlider() {
           type="button"
           onClick={next}
           aria-label="Next slide"
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/60 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-colors duration-300 hover:border-[var(--color-paper)] hover:text-[var(--color-paper)] md:right-5"
+          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full border border-[var(--color-rule)] bg-[var(--color-ink)]/70 p-2 text-[var(--color-paper-muted)] backdrop-blur-sm transition-all duration-300 hover:border-[var(--color-paper)] hover:bg-[var(--color-ink)]/90 hover:text-[var(--color-paper)] md:right-5"
         >
           <ChevronRight size={18} />
         </button>
 
         {/* Caption + counter */}
-        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-[var(--color-rule)] bg-[var(--color-ink)]/70 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-muted)] backdrop-blur-sm md:px-7 md:py-4 md:text-xs">
-          <span>{SLIDES[i].caption}</span>
+        <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-4 border-t border-[var(--color-rule)] bg-[var(--color-ink)]/80 px-5 py-3 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-muted)] backdrop-blur-md md:px-7 md:py-4 md:text-xs">
+          <span>{slide.caption}</span>
           <span>
             {String(i + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
           </span>
