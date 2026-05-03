@@ -57,7 +57,7 @@ export default function Hero() {
         >
           Eric
           <br />
-          Denis<span className="text-[var(--color-amber)]">.</span>
+          Denis<span className="gradient-text">.</span>
         </motion.h1>
 
         {/* Tagline */}
