@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Briefcase, FileText, Hexagon, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import type { Variants } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
@@ -22,6 +23,8 @@ type Engagement = {
   domain: string;
   scope: string;
   body: string;
+  icon: LucideIcon;
+  accent: string;
 };
 
 const ENGAGEMENTS: Engagement[] = [
@@ -31,6 +34,8 @@ const ENGAGEMENTS: Engagement[] = [
     domain: "iceservices.com",
     scope: "Music-tech investment advisory",
     body: "Advised executives on music-technology investment decisions — evaluating vendors, opportunities, and competitive positioning at the executive level.",
+    icon: Briefcase,
+    accent: "var(--color-amber)",
   },
   {
     client: "Musimap",
@@ -38,6 +43,8 @@ const ENGAGEMENTS: Engagement[] = [
     domain: "musimap.ai",
     scope: "Patent advisory · EU & US",
     body: "Music-technology patent advisory for submission and review across the EU and US — translating product features into defensible IP.",
+    icon: FileText,
+    accent: "var(--color-plum)",
   },
   {
     client: "Allfeat",
@@ -45,6 +52,8 @@ const ENGAGEMENTS: Engagement[] = [
     domain: "allfeat.org",
     scope: "Whitepaper · strategy · smart contracts",
     body: "Reviewed and edited the whitepaper, advised on strategy for a blockchain music-tech protocol bridging rights-holder data and on-chain primitives. Smart contracts exposure throughout.",
+    icon: Hexagon,
+    accent: "var(--color-sage)",
   },
   {
     client: "NEST Microfest",
@@ -52,6 +61,8 @@ const ENGAGEMENTS: Engagement[] = [
     domain: "nestmicrofest.com",
     scope: "Site admin + Stripe payments",
     body: "Administrator of the website and operator of the full payment stack — Stripe-powered ticketing turning a small festival operation into a self-serve experience.",
+    icon: Globe,
+    accent: "var(--color-amber-warm)",
   },
 ];
 
@@ -72,46 +83,61 @@ export default function Consulting() {
         />
 
         <div className="grid gap-6 md:grid-cols-2">
-          {ENGAGEMENTS.map((e, i) => (
-            <motion.a
-              key={e.client}
-              href={e.url}
-              target="_blank"
-              rel="noreferrer"
-              custom={0.1 + i * 0.12}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, margin: "-80px" }}
-              variants={REVEAL}
-              className="card-lift group flex flex-col justify-between gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] hover:bg-[var(--color-paper)]/[0.02] md:p-9"
-            >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3
-                    className="font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
-                    style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
+          {ENGAGEMENTS.map((e, i) => {
+            const Icon = e.icon;
+            return (
+              <motion.a
+                key={e.client}
+                href={e.url}
+                target="_blank"
+                rel="noreferrer"
+                custom={0.1 + i * 0.12}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-80px" }}
+                variants={REVEAL}
+                className="card-lift group flex flex-col justify-between gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] hover:bg-[var(--color-paper)]/[0.02] md:p-9"
+              >
+                <div className="flex items-start gap-5">
+                  <span
+                    className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full transition-transform duration-500 group-hover:rotate-6"
+                    style={{
+                      background: `color-mix(in srgb, ${e.accent} 14%, transparent)`,
+                      color: e.accent,
+                    }}
                   >
-                    {e.client}
-                  </h3>
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-amber)]">
-                    {e.scope}
-                  </p>
+                    <Icon size={22} strokeWidth={1.6} />
+                  </span>
+                  <div className="flex-1">
+                    <h3
+                      className="font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
+                      style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
+                    >
+                      {e.client}
+                    </h3>
+                    <p
+                      className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em]"
+                      style={{ color: e.accent }}
+                    >
+                      {e.scope}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={20}
+                    className="shrink-0 text-[var(--color-paper-muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-amber)]"
+                  />
                 </div>
-                <ArrowUpRight
-                  size={20}
-                  className="shrink-0 text-[var(--color-paper-muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[var(--color-amber)]"
-                />
-              </div>
 
-              <p className="text-base leading-relaxed text-[var(--color-paper-muted)]">
-                {e.body}
-              </p>
+                <p className="text-base leading-relaxed text-[var(--color-paper-muted)]">
+                  {e.body}
+                </p>
 
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)]">
-                ↗ {e.domain}
-              </span>
-            </motion.a>
-          ))}
+                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)]">
+                  ↗ {e.domain}
+                </span>
+              </motion.a>
+            );
+          })}
         </div>
 
         <motion.p

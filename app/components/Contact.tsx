@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowUpRight, Mail, MapPin, Copy, Check } from "lucide-react";
 import type { Variants } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
@@ -54,6 +55,121 @@ function mailto(subject?: string) {
   }`;
 }
 
+type DoorCardProps = {
+  number: string;
+  title: string;
+  accent: string;
+  subject: string;
+  body: string;
+  delay: number;
+};
+
+function DoorCard({ number, title, accent, subject, body, delay }: DoorCardProps) {
+  const [copied, setCopied] = useState(false);
+
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL_ADDRESS);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // clipboard not available — fall back to selecting text via prompt-style
+      window.prompt("Copy this email", EMAIL_ADDRESS);
+    }
+  };
+
+  return (
+    <motion.article
+      custom={delay}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+      variants={REVEAL}
+      className="card-lift relative flex flex-col gap-8 border border-[var(--color-rule)] p-8 md:p-10"
+    >
+      <div>
+        <span
+          className="font-mono text-[10px] uppercase tracking-[0.3em]"
+          style={{ color: accent }}
+        >
+          {number}
+        </span>
+        <h3
+          className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
+          style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
+        >
+          {title}
+        </h3>
+        <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
+          {body}
+        </p>
+      </div>
+
+      {/* Action row — email button + copy button. Always reachable, never silent. */}
+      <div className="relative z-[2] flex flex-col gap-3 sm:flex-row sm:items-stretch">
+        <a
+          href={mailto(subject)}
+          className="group inline-flex flex-1 items-center justify-center gap-2 rounded-full px-5 py-3.5 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-ink)] transition-all duration-300 hover:scale-[1.02]"
+          style={{
+            background: `linear-gradient(135deg, ${accent} 0%, var(--color-plum) 100%)`,
+            boxShadow: `0 12px 30px -10px ${accent}66`,
+          }}
+        >
+          <Mail size={14} />
+          Email me
+          <ArrowUpRight
+            size={14}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </a>
+        <button
+          type="button"
+          onClick={onCopy}
+          aria-live="polite"
+          className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border px-5 py-3.5 font-mono text-xs uppercase tracking-[0.2em] transition-all duration-300 hover:border-[var(--color-paper)] hover:bg-[var(--color-paper)]/5"
+          style={{
+            borderColor: copied ? accent : "var(--color-rule)",
+            color: copied ? accent : "var(--color-paper)",
+          }}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {copied ? (
+              <motion.span
+                key="copied"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.18 }}
+                className="inline-flex items-center gap-2"
+              >
+                <Check size={14} />
+                Copied!
+              </motion.span>
+            ) : (
+              <motion.span
+                key="default"
+                initial={{ opacity: 0, y: 4 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -4 }}
+                transition={{ duration: 0.18 }}
+                className="inline-flex items-center gap-2"
+              >
+                <Copy size={14} />
+                Copy email
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </button>
+      </div>
+
+      {/* Visible email — always selectable, fallback for users with no mail client */}
+      <div className="relative z-[2] -mt-4 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)]">
+        {EMAIL_ADDRESS}
+      </div>
+    </motion.article>
+  );
+}
+
 const CONTACT_ITEMS = [
   {
     icon: Mail,
@@ -95,72 +211,22 @@ export default function Contact() {
         />
 
         <div className="grid gap-6 md:grid-cols-2 md:gap-8">
-          <motion.a
-            custom={0.1}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={REVEAL}
-            href={mailto("Hire me · full-time")}
-            className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
-          >
-            <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                01
-              </span>
-              <h3
-                className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
-                style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
-              >
-                Hire me · full-time
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Senior PM roles. SaaS, music tech, AI products. Remote-first
-                since 2016. I&apos;ll also write code.
-              </p>
-            </div>
-            <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-paper)]">
-              Start a conversation
-              <ArrowUpRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </span>
-          </motion.a>
-
-          <motion.a
-            custom={0.25}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-            variants={REVEAL}
-            href={mailto("Hire me · per project")}
-            className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
-          >
-            <div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
-                02
-              </span>
-              <h3
-                className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
-                style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
-              >
-                Hire me · per project
-              </h3>
-              <p className="mt-4 text-base leading-relaxed text-[var(--color-paper-muted)]">
-                Websites, web and mobile prototypes, MVPs. Or an expert call on
-                music tech, royalties, or rights — the kind of advisory I&apos;ve
-                done for ICE, Musimap, and Allfeat.
-              </p>
-            </div>
-            <span className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-[var(--color-paper)]">
-              Pitch me your project
-              <ArrowUpRight
-                size={16}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </span>
-          </motion.a>
+          <DoorCard
+            number="01"
+            title="Hire me · full-time"
+            accent="var(--color-amber)"
+            subject="Hire me · full-time"
+            body="Senior PM roles. SaaS, music tech, AI products. Remote-first since 2016. I'll also write code."
+            delay={0.1}
+          />
+          <DoorCard
+            number="02"
+            title="Hire me · per project"
+            accent="var(--color-plum)"
+            subject="Hire me · per project"
+            body="Websites, web and mobile prototypes, MVPs. Or an expert call on music tech, royalties, or rights — the kind of advisory I've done for ICE, Musimap, and Allfeat."
+            delay={0.25}
+          />
         </div>
 
         <motion.ul
