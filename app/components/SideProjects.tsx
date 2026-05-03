@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import type { Variants } from "framer-motion";
 import SectionHeader from "./SectionHeader";
 
@@ -16,12 +15,14 @@ const REVEAL: Variants = {
   }),
 };
 
+type ProjectLink = { label: string; href: string };
+
 type Project = {
   title: string;
   role: string;
-  url?: string;
   metrics: { value: string; label: string }[];
   body: string;
+  links: ProjectLink[];
   span?: "wide" | "tall";
 };
 
@@ -34,37 +35,54 @@ const PROJECTS: Project[] = [
       { value: "22", label: "artists · 8 international" },
       { value: "500+", label: "guests · 5th edition" },
     ],
-    body: "A boutique festival I founded and lead end-to-end — direct manager of 11 partners, indirect manager of 30+ collaborators. Five editions and counting.",
+    body:
+      "A boutique micro-festival in the hills of Alt Penedès, an hour outside Barcelona — vineyards, pine forests, 12–14 June 2026. Co-founded with Kommuna, MASS and Simple Times. I lead the operation as CEO: budget, programming, partnerships (11 direct, 30+ indirect collaborators), production.",
+    links: [
+      { label: "nestmicrofest.com", href: "http://nestmicrofest.com/" },
+      { label: "@nestmicrofest", href: "https://instagram.com/nestmicrofest" },
+    ],
     span: "wide",
   },
   {
     title: "CMYK Music",
-    role: "Founder · YouTube",
+    role: "Founder · YouTube + DJ alias",
     metrics: [
       { value: "79M+", label: "views" },
       { value: "4.3M", label: "hours watched · ~490 yrs" },
       { value: "142K+", label: "subscribers" },
     ],
-    body: "Hand-curated music selections and mixes. 4.3 million hours of cumulative attention — roughly 490 years — is the strongest signal: people don't just click, they stay.",
+    body:
+      "Started in Brussels in 2013 to share vinyl rips that weren't online — grown into one of the bigger curated channels for house, UK garage, and funky electro. Heavy on 1996–2006 archival material plus contemporary demos. 4.3 million hours of cumulative attention is the strongest signal: people don't just click, they stay.",
+    links: [
+      { label: "soundcloud.com/cmykitsme", href: "https://soundcloud.com/cmykitsme" },
+    ],
   },
   {
     title: "Kommuna Records & Events",
-    role: "Co-founder",
+    role: "Co-founder · Barcelona, since 2015",
     metrics: [
       { value: "12", label: "vinyl releases" },
       { value: "5,000+", label: "copies sold worldwide" },
       { value: "100+", label: "events / 11 years" },
     ],
-    body: "Independent label and event series. Pressing, distribution, A&R, party promotion — every operational lever an indie label has.",
+    body:
+      "Independent label and event series in Barcelona, co-curated with pekkuliar. Vinyl-focused releases (KMN001 → KMN012), event bookings including Vera, XDB, El-B, Cassy, Voigtmann. Pressing, distribution, A&R, party promotion — every operational lever an indie label has.",
+    links: [
+      { label: "@kommunabcn", href: "https://www.instagram.com/kommunabcn/" },
+      { label: "soundcloud.com/kommunabcn", href: "http://soundcloud.com/kommunabcn" },
+      { label: "discogs", href: "https://www.discogs.com/label/1587128-Kommuna" },
+    ],
   },
   {
     title: "Kanvas.fm",
-    role: "Founder · web radio",
+    role: "Founder · web radio (discontinued)",
     metrics: [
       { value: "5,000+", label: "hand-curated tracks" },
       { value: "24/7", label: "algorithmic web radio" },
     ],
-    body: "Self-hosted Icecast on a VPS, multi-platform distribution (web, YouTube, SoundCloud, Streema, myTuner). Discontinued but a unique selection of mellow grooves.",
+    body:
+      "Self-hosted Icecast on a VPS, multi-platform distribution (web stream, YouTube algorithmic segments, SoundCloud archive), listed on Streema and myTuner. Tagline: \"a unique selection of mellow grooves.\" Discontinued, but a textbook end-to-end product built from infra to interface.",
+    links: [],
   },
 ];
 
@@ -97,24 +115,16 @@ export default function SideProjects() {
                 p.span === "wide" ? "md:col-span-2" : ""
               }`}
             >
-              <header className="flex items-start justify-between gap-4">
-                <div>
-                  <h3
-                    className="font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
-                    style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
-                  >
-                    {p.title}
-                  </h3>
-                  <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-amber)]">
-                    {p.role}
-                  </p>
-                </div>
-                {p.url ? (
-                  <ArrowUpRight
-                    size={20}
-                    className="shrink-0 text-[var(--color-paper-muted)] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  />
-                ) : null}
+              <header>
+                <h3
+                  className="font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-4xl"
+                  style={{ fontVariationSettings: "'opsz' 72, 'SOFT' 100, 'WONK' 0" }}
+                >
+                  {p.title}
+                </h3>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-amber)]">
+                  {p.role}
+                </p>
               </header>
 
               <ul
@@ -147,6 +157,23 @@ export default function SideProjects() {
               <p className="text-base leading-relaxed text-[var(--color-paper-muted)]">
                 {p.body}
               </p>
+
+              {p.links.length > 0 ? (
+                <ul className="flex flex-wrap gap-x-5 gap-y-2 border-t border-[var(--color-rule)] pt-4">
+                  {p.links.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper)] transition-colors duration-300 hover:text-[var(--color-amber)]"
+                      >
+                        ↗ {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </motion.article>
           ))}
         </div>

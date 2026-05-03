@@ -1,8 +1,22 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import type { Variants } from "framer-motion";
+import SectionHeader from "./SectionHeader";
+
+const EASE = [0.2, 0.8, 0.2, 1] as const;
+
+const REVEAL: Variants = {
+  hidden: { y: 20, opacity: 0 },
+  show: (delay: number) => ({
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.7, ease: EASE, delay },
+  }),
+};
 
 function GithubIcon({ size = 14 }: { size?: number }) {
   return (
@@ -18,27 +32,26 @@ function GithubIcon({ size = 14 }: { size?: number }) {
     </svg>
   );
 }
-import type { Variants } from "framer-motion";
-import SectionHeader from "./SectionHeader";
-
-const EASE = [0.2, 0.8, 0.2, 1] as const;
-
-const REVEAL: Variants = {
-  hidden: { y: 20, opacity: 0 },
-  show: (delay: number) => ({
-    y: 0,
-    opacity: 1,
-    transition: { duration: 0.7, ease: EASE, delay },
-  }),
-};
 
 const SCOPE = [
-  { tag: "Concept", body: "From blank page to validated product idea." },
-  { tag: "Mobile app", body: "Native-feeling experience, end-to-end." },
-  { tag: "Web app", body: "Full-stack flows for festival-goers." },
-  { tag: "Marketing site", body: "Landing, copy, design, deploy." },
-  { tag: "Prototypes", body: "Figma to working code, fast." },
-  { tag: "Front-end", body: "Pixel-perfect implementation." },
+  { tag: "Idea & concept", body: "From blank page to validated product." },
+  { tag: "Web — festipal.io", body: "Next.js 16, App Router, Tailwind v4, Firebase Hosting + SSR." },
+  { tag: "Mobile — app.festipal.io", body: "React Native + Expo, multi-language, role-based perms." },
+  { tag: "Tickets — tickets.festipal.io", body: "Host-routed B2C consumer surface." },
+  { tag: "FestiLink directory", body: "Marketplace connecting organizers ↔ suppliers ↔ venues." },
+  { tag: "Front-end + UI/UX", body: "Pixel-perfect, light + dark, multi-language (5)." },
+];
+
+const STACK = [
+  "Next.js 16",
+  "React 19",
+  "React Native + Expo",
+  "Tailwind v4",
+  "TypeScript",
+  "Firebase Auth + Firestore",
+  "Cloud Functions (SSR)",
+  "Resend",
+  "Stripe",
 ];
 
 export default function FestiPal() {
@@ -58,50 +71,29 @@ export default function FestiPal() {
               I <span className="text-[var(--color-amber)]">built it</span>.
             </>
           }
-          subtitle="The proof I'm not just a spec-writer. FestiPal — concept, mobile app, web app, marketing site, prototypes, and front-end — all built end-to-end. Launching soon."
+          subtitle="An event management operating system for festival organizers, suppliers, venues, and talent — with a B2C ticketing layer. Concept, web, mobile, prototypes, and front-end, all built end-to-end. Launching soon."
         />
 
-        {/* Hero placeholder — Eric to drop a real device mock or screenshot here */}
+        {/* Hero screenshot */}
         <motion.div
           custom={0.1}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-80px" }}
           variants={REVEAL}
-          className="relative mb-16 aspect-[16/9] w-full overflow-hidden border border-[var(--color-rule)] bg-gradient-to-br from-[var(--color-ink)] via-[var(--color-ink)] to-[#1a0f0d]"
+          className="relative mb-16 overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]"
         >
-          {/* Centered placeholder treatment — replaced once Eric provides screenshots */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-              <div
-                className="font-display text-[clamp(4rem,12vw,9rem)] leading-none tracking-tight text-[var(--color-paper)]"
-                style={{ fontVariationSettings: "'opsz' 144, 'SOFT' 100, 'WONK' 1" }}
-              >
-                Festi<span className="text-[var(--color-amber)]">Pal</span>
-              </div>
-              <p
-                className="mt-6 font-display text-xl italic text-[var(--color-paper-muted)] md:text-2xl"
-                style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
-              >
-                Your festival, in your pocket.
-              </p>
-              <p className="mt-8 font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-dim)]">
-                ↳ Screenshots & device mocks coming soon
-              </p>
-            </div>
-          </div>
-          {/* Decorative grid lines */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage:
-                "linear-gradient(to right, var(--color-paper) 1px, transparent 1px), linear-gradient(to bottom, var(--color-paper) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
+          <Image
+            src="/festipal/welcome-desktop.png"
+            alt="FestiPal onboarding — welcome screen, dark mode, desktop"
+            width={1920}
+            height={1080}
+            className="h-auto w-full"
+            priority
           />
         </motion.div>
 
+        {/* Description + scope grid */}
         <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:gap-20">
           <div>
             <motion.h3
@@ -123,9 +115,9 @@ export default function FestiPal() {
               className="mt-4 font-display text-2xl leading-snug text-[var(--color-paper)] md:text-3xl"
               style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
             >
-              A companion app for festival-goers — schedules, line-ups, social,
-              and on-site experience, designed by someone who actually runs
-              festivals.
+              FestiPal is the operating system for the modern festival —
+              connecting organizers, suppliers, venues, and talent in one
+              workspace, plus a consumer ticketing layer on top.
             </motion.p>
             <motion.p
               custom={0.4}
@@ -135,14 +127,31 @@ export default function FestiPal() {
               variants={REVEAL}
               className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-paper-muted)]"
             >
-              FestiPal is the bridge between my decade of music-tech product work
-              and my decade of running events as CEO of NEST Festival. Every flow
-              is shaped by what real festival-goers (and organizers) actually
-              need on the ground.
+              Three host-routed surfaces on one Next.js codebase:{" "}
+              <span className="text-[var(--color-paper)]">festipal.io</span> for
+              B2B marketing + workspace,{" "}
+              <span className="text-[var(--color-paper)]">app.festipal.io</span>{" "}
+              for the Expo mobile + web app, and{" "}
+              <span className="text-[var(--color-paper)]">tickets.festipal.io</span>{" "}
+              for consumer ticketing. Firebase backend, multi-language (EN / FR / DE / ES / IT),
+              role-based permissions, Stripe + Resend integrations.
+            </motion.p>
+            <motion.p
+              custom={0.5}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-80px" }}
+              variants={REVEAL}
+              className="mt-6 max-w-2xl text-base leading-relaxed text-[var(--color-paper-muted)]"
+            >
+              I had the idea, defined the concept, designed the workspace, built
+              the front-end, and wired the prototypes — all bridged by my decade
+              of music-tech product work and my decade of running festivals as
+              CEO of NEST.
             </motion.p>
 
             <motion.div
-              custom={0.55}
+              custom={0.65}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
@@ -150,20 +159,20 @@ export default function FestiPal() {
               className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center"
             >
               <Link
-                href="https://github.com"
+                href="https://github.com/FestiPal"
                 target="_blank"
                 rel="noreferrer"
                 className="group inline-flex items-center justify-center gap-2 border border-[var(--color-paper-muted)] px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper)] transition-colors duration-300 hover:bg-[var(--color-paper)] hover:text-[var(--color-ink)]"
               >
                 <GithubIcon size={14} />
-                View on GitHub
+                github.com/FestiPal
                 <ArrowUpRight
                   size={14}
                   className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 />
               </Link>
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[var(--color-paper-dim)]">
-                Repo URL → coming soon
+                festipal.io · launching soon
               </span>
             </motion.div>
           </div>
@@ -197,6 +206,66 @@ export default function FestiPal() {
             ))}
           </motion.ul>
         </div>
+
+        {/* Secondary screenshots */}
+        <motion.div
+          custom={0.55}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={REVEAL}
+          className="mt-16 grid gap-4 md:grid-cols-3 md:gap-6"
+        >
+          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
+            <Image
+              src="/festipal/signup-desktop.png"
+              alt="FestiPal sign-up flow"
+              width={1920}
+              height={1080}
+              className="h-auto w-full"
+            />
+          </div>
+          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
+            <Image
+              src="/festipal/done-desktop.png"
+              alt="FestiPal completed onboarding"
+              width={1920}
+              height={1080}
+              className="h-auto w-full"
+            />
+          </div>
+          <div className="overflow-hidden border border-[var(--color-rule)] bg-[var(--color-ink)]">
+            <Image
+              src="/festipal/welcome-mobile.png"
+              alt="FestiPal mobile onboarding"
+              width={750}
+              height={1334}
+              className="h-auto w-full"
+            />
+          </div>
+        </motion.div>
+
+        {/* Tech stack strip */}
+        <motion.div
+          custom={0.7}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={REVEAL}
+          className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-[var(--color-rule)] pt-8"
+        >
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-paper-muted)]">
+            Stack →
+          </span>
+          {STACK.map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-paper-dim)]"
+            >
+              {t}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
