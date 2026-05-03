@@ -75,10 +75,10 @@ export default function Services() {
               <span className="text-[var(--color-amber)]">work together</span>.
             </>
           }
-          subtitle="Full-time or per project. Same person, different scope. Music-tech advisory lives in its own section below."
+          subtitle="Full-time or per project. Same person, different scope."
         />
 
-        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
+        <div className="grid gap-8 md:grid-cols-3 md:gap-10">
           {SERVICES.map((s, i) => (
             <motion.article
               key={s.number}
@@ -87,15 +87,15 @@ export default function Services() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={REVEAL}
-              className="card-lift flex flex-col gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] md:p-9"
+              className="card-lift flex flex-col gap-7 border border-[var(--color-rule)] p-8 hover:border-[var(--color-paper-muted)] md:p-10 md:gap-8"
             >
               <header>
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">
                   {s.number}
                 </span>
                 <h3
-                  className="mt-3 font-display text-2xl leading-tight tracking-tight text-[var(--color-paper)] md:text-3xl"
-                  style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
+                  className="mt-4 font-display text-3xl leading-tight tracking-tight text-[var(--color-paper)] md:text-[2.1rem]"
+                  style={{ fontVariationSettings: "'opsz' 48, 'SOFT' 80, 'WONK' 0" }}
                 >
                   {s.title}
                 </h3>
