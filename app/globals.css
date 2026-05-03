@@ -1,26 +1,91 @@
 @import "tailwindcss";
 
+/* -----------------------------------------------------------------------------
+   Editorial design tokens — vinyl-sleeve-meets-builder-workshop
+   See CLAUDE.md for the full design system.
+----------------------------------------------------------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-ink: #0a0a0a;
+  --color-paper: #f5f1e8;
+  --color-amber: #e8765c;
+  --color-rule: rgba(245, 241, 232, 0.12);
+  --color-paper-muted: rgba(245, 241, 232, 0.6);
+  --color-paper-dim: rgba(245, 241, 232, 0.4);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-amber: var(--color-amber);
+  --color-rule: var(--color-rule);
+  --color-paper-muted: var(--color-paper-muted);
+  --color-paper-dim: var(--color-paper-dim);
+
+  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, "SF Mono", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* offset for sticky nav */
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection inherits the editorial vibe */
+::selection {
+  background: var(--color-amber);
+  color: var(--color-ink);
+}
+
+/* -----------------------------------------------------------------------------
+   Film grain overlay — subtle texture across the whole page.
+   Apply <div className="grain" aria-hidden /> as a fixed full-screen layer.
+----------------------------------------------------------------------------- */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.9'/></svg>");
+  background-size: 200px 200px;
+}
+
+/* -----------------------------------------------------------------------------
+   Pulsing amber dot — used for "open to work" / live indicators
+----------------------------------------------------------------------------- */
+.pulse-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: var(--color-amber);
+  position: relative;
+}
+.pulse-dot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-amber);
+  animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
 }
