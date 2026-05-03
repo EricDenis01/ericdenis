@@ -60,20 +60,6 @@ const SERVICES: Service[] = [
       "Strapi · Heroku CMS deployments",
     ],
   },
-  {
-    number: "04",
-    title: "Music-tech advisory",
-    blurb:
-      "Patent advisory, investment due diligence, whitepaper review, royalty and rights strategy. Calls or retainers.",
-    format: "Referral · retainer · expert networks",
-    forWho:
-      "Investors, music-tech startups, rights organisations, blockchain-music protocols.",
-    proof: [
-      "ICE — investment advisory",
-      "Musimap — patent advisory, EU + US",
-      "Allfeat — whitepaper, strategy, smart contracts",
-    ],
-  },
 ];
 
 export default function Services() {
@@ -85,14 +71,14 @@ export default function Services() {
           label="Services"
           title={
             <>
-              Four ways to{" "}
+              Three ways to{" "}
               <span className="text-[var(--color-amber)]">work together</span>.
             </>
           }
-          subtitle="Full-time, project work, or advisory. Same person, different scope."
+          subtitle="Full-time or per project. Same person, different scope. Music-tech advisory lives in its own section below."
         />
 
-        <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+        <div className="grid gap-6 md:grid-cols-3 md:gap-8">
           {SERVICES.map((s, i) => (
             <motion.article
               key={s.number}
@@ -101,7 +87,7 @@ export default function Services() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={REVEAL}
-              className="flex flex-col gap-6 border border-[var(--color-rule)] p-7 transition-colors duration-300 hover:border-[var(--color-paper-muted)] md:p-9"
+              className="card-lift flex flex-col gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] md:p-9"
             >
               <header>
                 <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[var(--color-amber)]">

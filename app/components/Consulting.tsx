@@ -83,7 +83,7 @@ export default function Consulting() {
               whileInView="show"
               viewport={{ once: true, margin: "-80px" }}
               variants={REVEAL}
-              className="group flex flex-col justify-between gap-6 border border-[var(--color-rule)] p-7 transition-colors duration-300 hover:border-[var(--color-paper-muted)] hover:bg-[var(--color-paper)]/[0.02] md:p-9"
+              className="card-lift group flex flex-col justify-between gap-6 border border-[var(--color-rule)] p-7 hover:border-[var(--color-paper-muted)] hover:bg-[var(--color-paper)]/[0.02] md:p-9"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>

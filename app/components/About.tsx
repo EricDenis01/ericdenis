@@ -18,19 +18,19 @@ const REVEAL: Variants = {
 
 const PILLARS = [
   {
-    tag: "Product",
-    title: "Senior PM in music tech.",
-    body: "BMAT, Utopia Music, Revelator. Royalty flows, content recognition, DSP analytics, AI roadmaps. I lead the product, prioritise the backlog, and ship to PROs, distributors, and the labels that actually use this stuff.",
+    tag: "Product Manager",
+    title: "Senior PM in music-tech SaaS.",
+    body: "Ten years building SaaS for music rights, royalties, and data-driven products. AI roadmaps at Revelator (LLMs, MCP, deep learning). Founded R&D at Utopia Music — content recognition AI deployed on 45,000 radios. Doubled SPRE revenues to €500K/year at BMAT. I lead distributed squads across R&D, Data, Engineering, and Design.",
   },
   {
-    tag: "Operator",
-    title: "I run music ventures too.",
-    body: "Founder & CEO of NEST Festival. Co-founder of Kommuna Records. CMYK Music on YouTube — 142k subscribers, 79M views. The same business my software is supposed to serve.",
+    tag: "Creative Projects",
+    title: "Active in the music industry.",
+    body: "Founder & CEO of NEST Festival. Co-founder of Kommuna Records — 12 vinyl releases, 5,000+ copies sold worldwide. Founder of CMYK Music on YouTube — 79M views, 4.3M hours watched, 142k subscribers. Touring DJ. The other side of the table from the SaaS.",
   },
   {
-    tag: "Builder",
-    title: "I write code, not just specs.",
-    body: "FestiPal — the event management OS — concept, web app, mobile app, prototypes, all built end-to-end. Same with this site. I prefer when the prototype that proves an idea is the actual prototype, not a deck.",
+    tag: "Entrepreneur",
+    title: "Builder, top to bottom.",
+    body: "FestiPal is mine end-to-end — idea, concept, web app, mobile app, prototypes, all my work. Strong business acumen, an eye for beautiful design, and intuition for what users actually need. I prefer when the prototype that proves an idea is the actual prototype, not a deck.",
   },
 ];
 
@@ -46,12 +46,12 @@ export default function About() {
           label="About"
           title={
             <>
-              Music product, music ventures,
+              A 360° view of the
               <br />
-              <span className="text-[var(--color-amber)]">code</span>.
+              <span className="text-[var(--color-amber)]">music industry</span>.
             </>
           }
-          subtitle="Three things, one person. They reinforce each other more than they conflict."
+          subtitle="Behind the curtain at the rights bodies and distributors. On stage at the festivals, labels, and YouTube channels. Ten years on every side of the table."
         />
 
         <div className="grid gap-12 md:grid-cols-[auto_1fr] md:gap-16 md:items-start">
@@ -112,9 +112,9 @@ export default function About() {
         >
           <p className="max-w-3xl font-display text-xl italic leading-relaxed text-[var(--color-paper-muted)] md:text-2xl"
              style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}>
-            B2B SaaS for the music industry by day. Festival, label, and a music
-            channel after hours. I&apos;ve been on both sides of the table for
-            ten years.
+            Strong business acumen, a feel for beautiful design, and an
+            intuition for what users actually need — sharpened by being one
+            of those users myself.
           </p>
           <ul className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]">
             <li>Based — Barcelona</li>
