@@ -123,6 +123,7 @@ export default function About() {
           </p>
           <ul className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.2em] text-[var(--color-paper-dim)]">
             <li>Based — Barcelona</li>
+            <li>Remote — 10+ yrs · pre-COVID</li>
             <li>Languages — FR / EN / ES</li>
             <li>Available — full-time + freelance</li>
           </ul>
