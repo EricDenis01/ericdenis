@@ -69,9 +69,10 @@ export default function Hero() {
           className="mt-8 max-w-2xl font-display text-2xl italic leading-snug text-[var(--color-paper-muted)] md:text-3xl"
           style={{ fontVariationSettings: "'opsz' 36, 'SOFT' 80, 'WONK' 0" }}
         >
-          An <span className="text-[var(--color-paper)]">AI-augmented product manager</span>{" "}
-          with a 360° view of the music industry — from rights bodies and
-          distributors to the artists, labels, and festivals they exist to serve.
+          An <span className="text-[var(--color-paper)]">AI-augmented product manager</span>.
+          Ten years of <span className="text-[var(--color-paper)]">SaaS</span>, with a{" "}
+          <span className="text-[var(--color-paper)]">music-tech specialism</span>{" "}
+          and a 360° view from the deep tech to the stage.
         </motion.p>
 
         {/* Dual CTAs */}

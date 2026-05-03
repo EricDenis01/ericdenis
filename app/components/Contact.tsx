@@ -46,31 +46,25 @@ const REVEAL: Variants = {
   }),
 };
 
-// Email is split + reassembled so naive crawlers harvesting the static HTML
-// can't pull it out as a single string. The mailto: is also assembled at
-// click time. Real users get a one-click experience.
+// Visible email is mildly obfuscated for naive scrapers; the mailto: href
+// is direct so the buttons reliably trigger the user's mail client.
 const EMAIL_USER = "contact";
 const EMAIL_HOST = "ericdenis.com";
-
-function emailHandler(subject?: string) {
-  return (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const target = `mailto:${EMAIL_USER}@${EMAIL_HOST}${
-      subject ? `?subject=${encodeURIComponent(subject)}` : ""
-    }`;
-    window.location.href = target;
-  };
-}
-
+const EMAIL_ADDRESS = `${EMAIL_USER}@${EMAIL_HOST}`;
 const VISIBLE_EMAIL = `${EMAIL_USER}[at]${EMAIL_HOST.replace(".", "[dot]")}`;
+
+function mailto(subject?: string) {
+  return `mailto:${EMAIL_ADDRESS}${
+    subject ? `?subject=${encodeURIComponent(subject)}` : ""
+  }`;
+}
 
 const CONTACT_ITEMS = [
   {
     icon: Mail,
     label: "Email",
     value: VISIBLE_EMAIL,
-    onClick: emailHandler(),
-    href: "#",
+    href: mailto(),
   },
   {
     icon: LinkedinIcon,
@@ -113,8 +107,7 @@ export default function Contact() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
-            href="#"
-            onClick={emailHandler("Hire me · full-time")}
+            href={mailto("Hire me · full-time")}
             className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
@@ -147,8 +140,7 @@ export default function Contact() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={REVEAL}
-            href="#"
-            onClick={emailHandler("Hire me · per project")}
+            href={mailto("Hire me · per project")}
             className="card-lift group flex flex-col justify-between gap-8 border border-[var(--color-rule)] p-8 hover:border-[var(--color-amber)] hover:bg-[var(--color-amber)]/[0.03] md:p-10"
           >
             <div>
@@ -204,7 +196,6 @@ export default function Contact() {
                 {isLink ? (
                   <a
                     href={item.href}
-                    onClick={"onClick" in item ? item.onClick : undefined}
                     target={item.href.startsWith("http") ? "_blank" : undefined}
                     rel={item.href.startsWith("http") ? "noreferrer" : undefined}
                     className="group block transition-colors duration-300 hover:text-[var(--color-amber)]"
