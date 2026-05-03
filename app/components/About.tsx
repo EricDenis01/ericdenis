@@ -46,12 +46,12 @@ export default function About() {
           label="About"
           title={
             <>
-              A 360° view of the
+              Senior PM with a
               <br />
-              <span className="text-[var(--color-amber)]">music industry</span>.
+              <span className="text-[var(--color-amber)]">360° view</span>.
             </>
           }
-          subtitle="Behind the curtain at the rights bodies and distributors. On stage at the festivals, labels, and YouTube channels. Ten years on every side of the table."
+          subtitle="AI-augmented product work in SaaS, with a music-tech specialism. Behind the curtain at the rights bodies and distributors, on stage at the labels, festivals, and YouTube channels. The playbook works anywhere; the music context is just where I sharpened it."
         />
 
         <div className="grid gap-12 md:grid-cols-[auto_1fr] md:gap-16 md:items-start">
