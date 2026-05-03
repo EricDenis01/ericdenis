@@ -13,8 +13,8 @@ export default async function OpengraphImage() {
         style={{
           width: "100%",
           height: "100%",
-          background: "#0a0a0a",
-          color: "#f5f1e8",
+          background: "linear-gradient(135deg, #f6f1e2 0%, #f1e7d0 100%)",
+          color: "#1a1410",
           padding: "80px",
           display: "flex",
           flexDirection: "column",
@@ -31,13 +31,13 @@ export default async function OpengraphImage() {
             fontSize: 18,
             letterSpacing: "0.3em",
             textTransform: "uppercase",
-            color: "rgba(245,241,232,0.6)",
+            color: "rgba(26,20,16,0.65)",
             fontFamily: "monospace",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <div style={{ width: 48, height: 1, background: "rgba(245,241,232,0.6)" }} />
-            <span>Senior PM · Music tech</span>
+            <div style={{ width: 48, height: 1, background: "rgba(26,20,16,0.5)" }} />
+            <span>AI-Augmented Senior PM</span>
           </div>
           <span>ericdenis.com</span>
         </div>
@@ -59,19 +59,19 @@ export default async function OpengraphImage() {
               display: "flex",
             }}
           >
-            Eric Denis<span style={{ color: "#e8765c" }}>.</span>
+            Eric Denis<span style={{ color: "#c8553d" }}>.</span>
           </div>
           <div
             style={{
               fontSize: 36,
               fontStyle: "italic",
               lineHeight: 1.25,
-              color: "rgba(245,241,232,0.7)",
+              color: "rgba(26,20,16,0.7)",
               maxWidth: 980,
               display: "flex",
             }}
           >
-            I make software for the music business. Ten years, three companies. Plus a festival, a label, and the code to build them.
+            An AI-augmented Senior PM. Ten years of SaaS, with a music-tech specialism and a 360° view from the deep tech to the stage.
           </div>
         </div>
 
@@ -84,9 +84,9 @@ export default async function OpengraphImage() {
             fontSize: 16,
             letterSpacing: "0.25em",
             textTransform: "uppercase",
-            color: "rgba(245,241,232,0.5)",
+            color: "rgba(26,20,16,0.55)",
             fontFamily: "monospace",
-            borderTop: "1px solid rgba(245,241,232,0.12)",
+            borderTop: "1px solid rgba(26,20,16,0.18)",
             paddingTop: 24,
           }}
         >
